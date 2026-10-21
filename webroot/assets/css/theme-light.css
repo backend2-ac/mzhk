@@ -1,0 +1,82 @@
+/* ==========================================================================
+   Светлая тема «тёплый кремовый». Подключается последней и задаёт палитру.
+   Чтобы вернуть тёмную тему — уберите подключение этого файла
+   (и см. _backup/version-2026-10-11-dark).
+   ========================================================================== */
+:root {
+  color-scheme: light;
+  --background: #F7F3EC;     /* фон страницы — слоновая кость */
+  --surface-2: #F0E9DD;      /* фон чередующихся секций */
+  --surface-3: #E9E0D1;      /* подвал */
+  --card: #FFFFFF;           /* карточки */
+  --field: #FBF8F3;          /* поля ввода */
+  --accent: #F58220;         /* фирменный оранжевый: кнопки, плашки, полосы */
+  --accent-text: #D9650B;    /* оранжевый для крупного текста (контраст ≥ 3:1) */
+  --accent-ink: #B85207;     /* оранжевый для мелкого текста (контраст ≥ 4.5:1) */
+  --text: #16202E;           /* основной текст — глубокий тёмно-синий */
+  --ink: #16202E;            /* текст на оранжевом */
+  --muted: #6B655C;          /* второстепенный текст */
+  --border: #E8E0D3;
+  --line-strong: #DCD2C2;
+  --shadow-card: 0 1px 2px rgba(70, 50, 20, .04), 0 12px 32px -20px rgba(70, 50, 20, .22);
+}
+::selection { background: rgba(245, 130, 32, .25); color: var(--text); }
+
+/* ---------- Ритм секций: светлый / кремовый по очереди, подвал — самый тёплый ---------- */
+.payment-section, #layouts, #specifications, #company { background: var(--surface-2); }
+.site-footer { background: var(--surface-3); border-top-color: var(--line-strong); }
+
+/* ---------- Текст поверх фотографий остаётся белым ---------- */
+.caption, .gallery-label { color: #fff; }
+
+/* ---------- Карточки: белые, мягкая тень вместо тёмной рамки ---------- */
+.card, .infra-card, .payment-card, .plan-card, .video-card, .spec-card, .advantage-item,
+.company-facts, .selection-form, .calc, .contact-map, .plans-empty {
+  background-color: var(--card);
+  border-color: var(--border);
+  box-shadow: var(--shadow-card);
+}
+.selection-form, .plans-empty { border: 1px solid var(--border); }
+.plan-image { border: 1px solid var(--border); background: #fff; }
+
+/* ---------- Оранжевый текст: читаемые оттенки ---------- */
+.eyebrow { color: var(--accent-ink); }
+.section-title span, h1 span, .modal-title span, .calc-title span { color: var(--accent-text); }
+.payment-price, .company-facts strong { color: var(--accent-text); }
+.payment-tags span::before { color: var(--accent-ink); }
+.plan-select, .contact-socials a, .gallery-copy > span, .instagram-follow,
+.social-profile > span { color: var(--accent-ink); }
+.navigation a:hover, .navigation a.is-active, .text-link:hover,
+.contact-email:hover, .contact-phone:hover, .footer-bottom > a:last-child:hover,
+.social-profile:hover { color: var(--accent-ink); }
+.circle-link { color: var(--accent-ink); border-color: var(--accent); }
+.circle-link:hover { color: var(--ink); }
+.icon, .spec-card svg, .advantage-item svg { color: var(--accent-text); }
+.payment-motif { opacity: .4; -webkit-text-stroke-color: var(--accent-text); }
+
+/* ---------- Вкладки и кнопки ---------- */
+.plan-tabs button { background: var(--card); border-color: var(--line-strong); color: var(--text); }
+.plan-tabs button[aria-selected=true] { color: var(--ink); box-shadow: 0 8px 20px -10px rgba(245, 130, 32, .7); }
+.button, .selection-fields button { color: var(--ink); }
+.social-profile { background: var(--card); }
+
+/* ---------- Шапка ---------- */
+.hero .site-header { background: var(--background); }
+.brand span { color: var(--text); }
+
+/* ---------- Формы ---------- */
+.selection-fields input::placeholder { color: #A39B8F; }
+.selection-form p, .selection-note { color: var(--muted); }
+
+/* ---------- Мелочи ---------- */
+.instagram-avatar { color: #262626 !important; }
+.marquee { border-color: var(--border); }
+.marquee span.is-outline { -webkit-text-stroke: 1.2px var(--accent-text); }
+.marquee i { color: var(--accent); }
+.calc-result { border-left-color: var(--border); }
+.calc-options { background: var(--background); }
+.footer-bottom { border-top-color: var(--line-strong); }
+
+/* Кнопки слайдера поверх баннеров: плотнее, чтобы читались и на светлых, и на тёмных картинках */
+.slider-arrows button { background: rgba(22, 32, 46, .5); border-color: rgba(255, 255, 255, .55); color: #fff; }
+.slider-nav { background: rgba(22, 32, 46, .5); border-color: rgba(255, 255, 255, .3); }

@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Переключатель тем + тёмная тема.
+   Светлая тема — по умолчанию (theme-light.css). Тёмная включается атрибутом
+   <html data-theme="dark">, который ставит кнопка в шапке (assets/js/theme.js).
+   ========================================================================== */
+
+/* ---------- Кнопка переключения ---------- */
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.theme-toggle {
+  position: relative; flex: none;
+  width: 48px; height: 48px; padding: 0;
+  border-radius: 50%; border: 1px solid var(--line-strong);
+  background: var(--card); color: var(--text);
+  display: grid; place-items: center; overflow: hidden;
+  transition: background-color .3s, border-color .3s, color .3s, transform .4s cubic-bezier(.22,1,.36,1), box-shadow .3s;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent-ink); transform: rotate(-12deg); box-shadow: 0 8px 20px -10px rgba(245,130,32,.6); }
+.theme-icon { position: absolute; width: 22px; height: 22px; transition: transform .55s cubic-bezier(.22,1,.36,1), opacity .35s; }
+/* В светлой теме видна луна («включить тёмную»), в тёмной — солнце */
+.theme-icon-sun  { transform: rotate(-90deg) scale(.4); opacity: 0; }
+.theme-icon-moon { transform: none; opacity: 1; }
+html[data-theme="dark"] .theme-icon-sun  { transform: none; opacity: 1; }
+html[data-theme="dark"] .theme-icon-moon { transform: rotate(90deg) scale(.4); opacity: 0; }
+@media (max-width: 600px) {
+  .header-actions { gap: 8px; }
+  .theme-toggle { width: 40px; height: 40px; }
+  .theme-icon { width: 19px; height: 19px; }
+}
+
+/* Круговое «растекание» новой темы от кнопки (View Transitions API) */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-new(root) { z-index: 2; }
+
+/* ---------- Тёмная тема: палитра ---------- */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #091421;
+  --surface-2: #0C1928;
+  --surface-3: #0A1623;
+  --card: #101E2E;
+  --field: #091421;
+  --accent: #F58220;
+  --accent-text: #F58220;
+  --accent-ink: #FFA552;
+  --text: #F5F4F0;
+  --ink: #091421;
+  --muted: #B4BFCB;
+  --border: #22344A;
+  --line-strong: #304052;
+  --shadow-card: 0 1px 0 rgba(255,255,255,.02);
+}
+html[data-theme="dark"] ::selection { background: rgba(245,130,32,.35); color: #fff; }
+
+/* Шапка при прокрутке — тёмное стекло */
+html[data-theme="dark"].header-fixed .site-header.is-scrolled {
+  background: rgba(9, 20, 33, .72);
+  border-bottom-color: rgba(255, 255, 255, .08);
+  box-shadow: 0 10px 30px -18px rgba(0, 0, 0, .7);
+}
+@media (hover: hover) {
+  html[data-theme="dark"] :is(.card, .infra-card, .payment-card, .plan-card, .video-card, .spec-card, .advantage-item):hover {
+    box-shadow: 0 24px 48px -24px rgba(0,0,0,.75), 0 0 0 1px rgba(245,130,32,.08), 0 18px 40px -28px rgba(245,130,32,.45);
+  }
+}
+
+/* Формы и модальное окно */
+html[data-theme="dark"] .field-error,
+html[data-theme="dark"] .is-error { color: #FF8A65 !important; }
+html[data-theme="dark"] input.is-invalid { border-color: #FF6B4A !important; box-shadow: 0 0 0 4px rgba(255,107,74,.14) !important; }
+html[data-theme="dark"] .selection-fields input::placeholder,
+html[data-theme="dark"] .modal-field input::placeholder { color: #6F7F90; }
+html[data-theme="dark"] .modal.is-open::backdrop { background: rgba(5, 11, 19, .72); }
+html[data-theme="dark"] .modal-card {
+  background: radial-gradient(120% 80% at 100% 0%, rgba(245,130,32,.16), transparent 55%), var(--card);
+  box-shadow: 0 40px 80px -30px rgba(0,0,0,.8);
+}
+
+/* Калькулятор */
+html[data-theme="dark"] .calc-range { background: linear-gradient(90deg, #FFB342, var(--accent) var(--p), #24364A var(--p)); }
+html[data-theme="dark"] .calc-result {
+  background: radial-gradient(110% 90% at 100% 0%, rgba(245,130,32,.28), transparent 60%), linear-gradient(160deg, #13253A, #0C1A2A);
+}
+html[data-theme="dark"] .calc-bar { background: rgba(255,255,255,.1); }
+html[data-theme="dark"] .calc-range::-webkit-slider-thumb { background: var(--text); }
+
+/* Проявление текста по словам */
+html[data-theme="dark"] .word-reveal .w { color: rgba(245, 244, 240, .16); }
+html[data-theme="dark"] .word-reveal .w.is-lit { color: var(--text); }
+html[data-theme="dark"] .word-reveal .w.is-accent.is-lit { color: var(--accent); }
+
+/* Свечение за курсором чуть ярче на тёмном */
+html[data-theme="dark"] .spot::after { background: radial-gradient(420px circle at var(--mx, -999px) var(--my, -999px), rgba(245,130,32,.10), transparent 60%); }
+
+/* Страница политики */
+html[data-theme="dark"] .policy p, html[data-theme="dark"] .policy li { color: var(--muted); }
+html[data-theme="dark"] .policy-note { color: #FFD3AA; }
+html[data-theme="dark"] .policy mark { color: #FFB342; background: rgba(245,130,32,.2); }
+
+/* Телефон: логотип, тема и звонок — в одну строку */
+@media (max-width: 520px) {
+  .site-header .brand { font-size: 18px; gap: 8px; }
+  .site-header .brand .logo { width: 28px; height: 28px; }
+  .header-actions .button-small { min-height:44px;font-size:12px;padding:10px;gap:.45em; }
+  .theme-toggle { width:44px;height:44px; }
+}
+@media (max-width: 360px) {
+  .site-header .brand { gap:6px; }
+  .site-header .brand .logo { width:24px;height:24px; }
+  .header-actions { gap:6px; }
+  .header-actions .button-small { width:104px;font-size:11px;line-height:1.35;white-space:normal;padding:8px; }
+}
+

@@ -1,0 +1,211 @@
+msgid "Главная"
+msgstr "Main"
+
+msgid "Главная"
+msgstr "Басты бет"
+
+msgid "Доступно, надежно, практично!"
+msgstr "Affordable, reliable, practical!"
+
+msgid "Подробнее"
+msgstr "Read more"
+
+msgid "Далее"
+msgstr "Next"
+
+msgid "Преимущества"
+msgstr "Benefits"
+
+msgid "Популярные категории"
+msgstr "Popular Categories"
+
+msgid "Наши работы"
+msgstr "Our works"
+
+msgid "Все проекты"
+msgstr "All projects"
+
+msgid "Бренды"
+msgstr "Brands"
+
+msgid "О компании"
+msgstr "About company"
+
+msgid "Отзывы"
+msgstr "Reviews"
+
+msgid "Оставить отзыв"
+msgstr "Leave feedback"
+
+msgid "Имя"
+msgstr "Name"
+
+msgid "Почта"
+msgstr "Email"
+
+msgid "Ваше имя"
+msgstr "Your name"
+
+msgid "Ваше сообщение"
+msgstr "Your message"
+
+msgid "Оценка"
+msgstr "Rated"
+
+msgid "Отправить"
+msgstr "Submit "
+
+msgid "Контакты"
+msgstr "Contacts"
+
+msgid "Акции и скидки"
+msgstr "Promotions & discounts"
+
+msgid "Скидка"
+msgstr "Discount"
+
+msgid "Заказать звонок"
+msgstr "Order a call"
+
+msgid "<span class='sales__discounts'>Скидка</span>"
+msgstr "<span class='sales__discounts'>Discount</span>"
+
+msgid "Поиск"
+msgstr "Search"
+
+msgid "Результаты поиска:"
+msgstr "Search Results:"
+
+msgid "Сортировать по:"
+msgstr "Sort by:"
+
+msgid "продукции"
+msgstr "products"
+
+msgid "услуги"
+msgstr "services"
+
+msgid "В корзину"
+msgstr "Go to cart"
+
+msgid "Товар в корзине"
+msgstr "Product in cart"
+
+msgid "Товар был добавлен в корзину"
+msgstr "This product was added to cart"
+
+msgid "Продолжить покупки"
+msgstr "Continue shopping"
+
+msgid "Перейти в корзину"
+msgstr "Go to cart"
+
+msgid "Услуги"
+msgstr "Services"
+
+
+msgid "Подробнее"
+msgstr "Read more"
+
+
+msgid "Наши работы"
+msgstr "Our work"
+
+
+msgid "К сожалению в данном разделе еще не добавлена информация…"
+msgstr "Unfortunately, no information has yet been added to this section...
+
+
+msgid "Описание продукции"
+msgstr "Product description"
+
+
+msgid "Характеристика продукции"
+msgstr "Product characteristics"
+
+
+msgid "Рекомендации"
+msgstr "Recommendations"
+
+
+msgid "Доставка"
+msgstr "Delivery"
+
+
+msgid "Сумма доставки оплачивается отдельно"
+msgstr "Shipping charges are payable separately"
+
+
+msgid "Итог"
+msgstr "Summary"
+
+
+msgid "Бесплатно"
+msgstr "For free"
+
+
+msgid "Купить"
+msgstr "Buy"
+
+
+msgid "Ваша заявка принята"
+msgstr "Your request has been accepted"
+
+
+msgid "В скором времени наш менеджер свяжется с Вами"
+msgstr "Our manager will contact you shortly"
+
+
+msgid "Контактное лицо"
+msgstr "Contact Person"
+
+
+msgid "Номер телефона"
+msgstr "Телефон нөмірі"
+
+
+msgid "Комментарий к заказу"
+msgstr "Order comment"
+
+
+msgid "Ваша почта"
+msgstr "Your mail"
+
+
+msgid "В вашей корзине пусто!"
+msgstr "Your cart is empty!"
+
+
+msgid "О компании"
+msgstr "About company"
+
+
+msgid "Услуги"
+msgstr "Services"
+
+
+msgid "Наши работы"
+msgstr "Our work"
+
+
+msgid "Акции и скидки"
+msgstr "Promotions and discounts"
+
+
+msgid "Контакты"
+msgstr "Contact"
+
+
+msgid "Все права защищены"
+msgstr "All rights reserved"
+
+
+msgid "Разработка сайтов Астана"
+msgstr "Website development Astana"
+
+
+msgid "Акция"
+msgstr "Promotion"
+
+msgid  '<span class="sales__promotions">Акция</span>'	
+msgstr '<span class="sales__promotions">Promotion</span>'	

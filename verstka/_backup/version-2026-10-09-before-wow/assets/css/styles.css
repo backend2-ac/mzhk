@@ -1,0 +1,677 @@
+/* Общая сетка проекта: 1440 / 96 / 64 / 32 px. */
+@font-face {
+  font-family: "Lora";
+  src: url("../fonts/lora.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("../fonts/manrope.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  margin: 0;
+  background: #091421;
+  color: #F5F4F0;
+  font-family: Manrope,sans-serif
+}
+
+.section {
+  padding: 96px 48px
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto
+}
+
+.heading {
+  display: grid;
+  grid-template-columns: 864px 544px;
+  gap: 32px;
+  margin-bottom: 64px
+}
+
+.eyebrow {
+  font-size: 14px;
+  letter-spacing: 3px;
+  margin: 0 0 16px
+}
+
+h1 {
+  font-family: Lora,serif;
+  font-weight: 400;
+  font-size: 56px;
+  line-height: 1.15;
+  margin: 0
+}
+
+h1 span {
+  color: #F58220
+}
+
+.intro {
+  font-size: 20px;
+  line-height: 1.65;
+  margin: 36px 0 0
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 864px 544px;
+  gap: 32px
+}
+
+.video {
+  position: relative;
+  height: 486px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #101E2E
+}
+
+.video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%
+}
+
+.video:after {
+  content: "";
+  position: absolute;
+  inset: 65% 0 0;
+  background: linear-gradient(transparent,rgba(0,0,0,.65))
+}
+
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border: 2px solid white;
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: #09142180;
+  z-index: 1;
+  display: grid;
+  place-items: center
+}
+
+.play:after {
+  content: "";
+  border-left: 22px solid white;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  margin-left: 5px
+}
+
+.caption {
+  position: absolute;
+  bottom: 24px;
+  left: 32px;
+  right: 32px;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 32px
+}
+
+.card {
+  background: #101E2E;
+  border: 1px solid #2b3c4e;
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex: 1
+}
+
+.icon {
+  color: #F58220;
+  flex: 0 0 48px
+}
+
+.icon svg {
+  width: 48px;
+  height: 48px;
+  display: block
+}
+
+h2 {
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  line-height: 1.4
+}
+
+.card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #c6ccd4;
+  margin: 0
+}
+
+.infrastructure {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid #2b3c4e
+}
+
+.infrastructure .eyebrow {
+  margin-bottom: 24px
+}
+
+.infra-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 32px
+}
+
+.infra-card {
+  background: #101E2E;
+  border: 1px solid #2b3c4e;
+  border-radius: 12px;
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 128px
+}
+
+.infra-card .icon {
+  flex-basis: 40px
+}
+
+.infra-card svg {
+  width: 40px;
+  height: 40px
+}
+
+.infra-card h2 {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0
+}
+
+.infra-card p {
+  font-size: 14px;
+  color: #c6ccd4;
+  margin: 4px 0 0
+}
+
+@media(max-width:1000px) {
+  .section {
+    padding: 64px 32px
+  }
+  .heading,.main {
+    grid-template-columns: 1fr
+  }
+  .heading {
+    margin-bottom: 40px
+  }
+  .intro {
+    margin: 0
+  }
+  .video {
+    height: auto;
+    aspect-ratio: 16/9
+  }
+  .infra-grid {
+    grid-template-columns: repeat(2,1fr)
+  }
+  h1 {
+    font-size: 44px
+  }
+}
+
+@media(max-width:600px) {
+  .section {
+    padding: 48px 20px
+  }
+  .heading {
+    margin-bottom: 32px
+  }
+  h1 {
+    font-size: 34px
+  }
+  .infra-grid {
+    grid-template-columns: 1fr
+  }
+  .card,.infra-card {
+    padding: 24px
+  }
+  .caption {
+    font-size: 13px;
+    left: 16px;
+    right: 16px
+  }
+}
+
+/* Общие компоненты */
+:root {
+  --background: #091421;
+  --card: #101E2E;
+  --accent: #F58220;
+  --text: #F5F4F0;
+  --muted: #C6CCD4;
+  --border: #2B3C4E;
+}
+html { scroll-behavior: smooth; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+.section-title { font-family: Lora, serif; font-size: 56px; font-weight: 400; line-height: 1.15; margin: 0; }
+.section-title span { color: var(--accent); }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 32px; min-height: 56px; padding: 16px 32px; border: 0; border-radius: 40px; background: var(--accent); color: #091421; font-weight: 600; font-size: 16px; }
+.button:hover { background: #FF9A3C; }
+a:focus-visible, button:focus-visible { outline: 3px solid white; outline-offset: 5px; }
+/* Первый экран */
+.hero { min-height: 100svh; display: flex; flex-direction: column; background-image: linear-gradient(90deg, rgba(9,20,33,.94) 0%, rgba(9,20,33,.8) 40%, rgba(9,20,33,.25) 100%), url('../images/hero.webp'); background-size: cover; background-position: center, right 48%; padding: 0 48px; }
+.site-header { border-bottom: 1px solid #FFFFFF26; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; min-height: 96px; }
+.brand { display: flex; align-items: center; gap: 14px; font-size: 32px; white-space: nowrap; }
+.logo { width: 40px; height: 40px; }
+.navigation { display: flex; align-items: center; gap: 28px; font-size: 14px; }
+.navigation a:hover, .text-link:hover { color: var(--accent); }
+.button-small { font-size: 14px; min-height: 48px; padding: 12px 24px; gap: 16px; white-space: nowrap; }
+.hero-content { width: 100%; flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 64px; align-items: center; padding: 96px 0; }
+.hero h1 { font-size: clamp(48px, 4vw, 76px); }
+.hero-description { max-width: 640px; margin: 32px 0; font-size: 22px; line-height: 1.6; }
+.hero-offer { padding: 32px; background: #101E2EEB; border: 1px solid var(--border); border-radius: 20px; }
+.offer-title { font-size: 26px; margin: 0; line-height: 1.4; }
+.offer-zero { font-size: 112px; color: var(--accent); line-height: 1.2; margin-top: 16px; }
+.offer-zero span { font-size: 72px; }
+.offer-duration { margin: 0 0 24px; font-size: 20px; }
+.offer-price { padding-top: 24px; border-top: 1px solid var(--border); font-size: 28px; }
+.offer-detail { color: var(--muted); line-height: 1.7; font-size: 15px; }
+.text-link { font-size: 14px; }
+.hero-bottom { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 32px; padding-bottom: 48px; }
+.scroll-link { display: flex; gap: 32px; font-size: 15px; }
+.hero-benefits { display: flex; gap: 32px; padding: 24px 32px; border: 1px solid var(--border); background: #101E2EEB; border-radius: 16px; font-size: 16px; }
+.hero-benefits span + span { border-left: 1px solid var(--border); padding-left: 32px; }
+/* Условия оплаты */
+.payment-heading { display: flex; justify-content: space-between; align-items: center; gap: 32px; margin-bottom: 64px; }
+.payment-heading > p { border-left: 1px solid var(--border); padding-left: 32px; color: var(--muted); font-size: 20px; line-height: 1.6; }
+.payment-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; }
+.payment-card { position: relative; padding: 32px; border: 1px solid var(--border); border-radius: 20px; background: var(--card); }
+.payment-featured { grid-column: 1 / -1; display: grid; grid-template-columns: 340px minmax(0, 1fr) 280px; gap: 32px; align-items: center; min-height: 256px; padding-right: 88px; }
+.payment-summary h3 { font-family: Lora, serif; font-size: 28px; font-weight: 400; margin: 0; }
+.payment-subtitle { color: var(--muted); margin: 8px 0 0; }
+.payment-price { color: var(--accent); font-size: 36px; font-weight: 600; margin: 24px 0 0; white-space: nowrap; }
+.payment-price span { color: var(--text); font-size: 23px; font-weight: 400; }
+.payment-terms { border-left: 1px solid var(--border); padding-left: 32px; color: var(--muted); line-height: 1.6; font-size: 16px; }
+.payment-terms p { margin: 0 0 16px; }
+.payment-terms p:last-child { margin-bottom: 0; }
+.payment-tags { display: flex; flex-wrap: wrap; gap: 16px 24px; margin-top: 24px; font-size: 14px; }
+.payment-tags span::before { content: '✓'; color: var(--accent); margin-right: 8px; }
+.payment-motif { font-family: Lora, serif; font-size: 100px; color: transparent; -webkit-text-stroke: 1px var(--accent); opacity: .55; }
+.circle-link { position: absolute; right: 24px; top: 24px; border: 1px solid var(--accent); color: var(--accent); border-radius: 50%; width: 40px; height: 40px; display: grid; place-items: center; font-size: 24px; }
+.circle-link:hover { background: var(--accent); color: var(--background); }
+.payment-compact { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; min-height: 216px; padding-right: 80px; }
+.payment-compact .payment-summary h3 { font-size: 25px; }
+.payment-compact .payment-price { font-size: 30px; }
+.payment-action { margin-top: 48px; text-align: center; }
+.demo-note { color: var(--muted); font-size: 14px; margin: 16px 0 0; }
+@media (max-width: 1300px) {
+  .navigation { gap: 16px; font-size: 12px; }
+  .brand { font-size: 26px; }
+  .payment-featured { grid-template-columns: 300px 1fr; }
+  .payment-motif { display: none; }
+  .payment-compact { grid-template-columns: 1fr; }
+  .payment-compact .payment-terms { border: 0; padding-left: 0; }
+}
+@media (max-width: 1000px) {
+  .hero { padding: 0 32px; }
+  .header-inner { flex-wrap: wrap; padding: 24px 0; }
+  .navigation { order: 3; width: 100%; flex-wrap: wrap; font-size: 14px; }
+  .hero-content { grid-template-columns: 1fr 340px; gap: 32px; padding: 64px 0; }
+  .hero h1 { font-size: 48px; }
+  .hero-description { font-size: 18px; }
+  .hero-benefits { gap: 16px; font-size: 14px; }
+  .hero-benefits span + span { padding-left: 16px; }
+  .section-title { font-size: 44px; }
+  .payment-heading { margin-bottom: 40px; }
+  .payment-heading > p { font-size: 16px; }
+  .payment-featured { grid-template-columns: 1fr; }
+  .payment-featured .payment-terms { border: 0; padding-left: 0; }
+}
+@media (max-width: 600px) {
+  .hero { padding: 0 20px; }
+  .header-inner { gap: 20px; }
+  .brand { font-size: 24px; }
+  .button-small { font-size: 12px; padding: 12px 16px; }
+  .navigation { gap: 14px; font-size: 12px; }
+  .hero-content { grid-template-columns: 1fr; padding: 48px 0; }
+  .hero h1 { font-size: 42px; }
+  .hero-offer { padding: 24px; }
+  .hero-bottom { display: block; padding-bottom: 32px; }
+  .hero-benefits { flex-direction: column; margin-top: 24px; padding: 24px; }
+  .hero-benefits span + span { border: 0; padding-left: 0; }
+  .section-title { font-size: 34px; }
+  .payment-heading { display: block; margin-bottom: 32px; }
+  .payment-heading > p { border: 0; padding-left: 0; margin-top: 24px; }
+  .payment-grid { grid-template-columns: 1fr; gap: 24px; }
+  .payment-card { padding: 24px; padding-right: 72px; }
+  .payment-price, .payment-compact .payment-price { font-size: 30px; }
+  .payment-terms { font-size: 15px; }
+  .payment-action { margin-top: 32px; }
+  .button { gap: 16px; font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Flexible shared columns below maximum container width. */
+@media (min-width: 1001px) {
+  .heading, .main { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); }
+}
+
+/* Четвёртый блок: примеры будущих публикаций Instagram. */
+.social-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 64px;
+}
+.social-profile {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 24px;
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  font-size: 16px;
+}
+.social-profile > span { color: var(--accent); }
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+}
+.social-card {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+}
+.social-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; }
+.social-photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.social-mark {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #091421DB;
+  color: white;
+}
+.social-mark svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.social-copy { padding: 32px; }
+.social-copy h3 { margin: 0 0 16px; font-size: 18px; font-weight: 600; line-height: 1.4; }
+.social-copy p { margin: 0; min-height: 52px; font-size: 16px; line-height: 1.6; color: var(--muted); }
+.social-post-label { display: flex; justify-content: space-between; gap: 12px; margin-top: 24px; font-size: 13px; color: var(--muted); }
+.social-post-label > span { color: var(--accent); }
+@media (max-width: 1000px) {
+  .social-heading { margin-bottom: 40px; }
+  .social-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .social-copy { padding: 24px; }
+}
+@media (max-width: 600px) {
+  .social-heading { align-items: flex-start; flex-direction: column; gap: 24px; margin-bottom: 32px; }
+  .social-grid { grid-template-columns: 1fr; }
+}
+
+/* Карточки в формате публикаций Instagram; интеграция не подключена. */
+.instagram-header { display: flex; align-items: center; gap: 10px; padding: 16px; min-height: 76px; }
+.instagram-avatar { display: grid; place-items: center; flex: 0 0 32px; height: 32px; background: var(--accent); color: var(--background); border-radius: 50%; font-weight: 600; }
+.instagram-account { min-width: 0; font-size: 13px; font-weight: 600; }
+.instagram-account span { display: block; color: var(--muted); font-size: 11px; font-weight: 400; margin-top: 4px; }
+.instagram-follow { margin-left: auto; font-size: 11px; color: var(--accent); white-space: nowrap; }
+.social-photo { display: block; aspect-ratio: 9 / 16; }
+.instagram-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; background: #09142180; border-radius: 50%; display: grid; place-items: center; }
+.instagram-play::after { content: ''; border-left: 20px solid white; border-top: 13px solid transparent; border-bottom: 13px solid transparent; margin-left: 4px; }
+.social-copy { padding: 16px; }
+.instagram-more { display: block; font-size: 13px; color: var(--accent); padding-bottom: 16px; }
+.instagram-actions { display: flex; justify-content: space-between; padding: 12px 0; border-top: 1px solid var(--border); font-size: 23px; }
+.social-copy .instagram-caption { min-height: 0; font-size: 13px; line-height: 1.6; }
+.instagram-caption strong { color: var(--text); }
+
+/* Стандартное светлое оформление встроенных публикаций Instagram. */
+.social-card { background: #fff; color: #262626; border: 1px solid #dbdbdb; border-radius: 3px; font-family: Arial, Helvetica, sans-serif; }
+.social-card a { color: inherit; }
+.instagram-avatar { background: #efefef; color: #262626 !important; }
+.instagram-account span { color: #737373; }
+.social-card .instagram-follow { color: #0095f6; font-weight: 600; }
+.social-card .instagram-more { color: #0095f6; text-align: center; font-weight: 600; }
+.instagram-actions { border-top-color: #dbdbdb; color: #262626; }
+.social-card .instagram-caption, .instagram-caption strong { color: #262626; }
+
+/* 5. Планировки: общие интервалы 96 / 64 / 32. */
+.layouts-heading { display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:64px; }
+.layouts-heading h2 { font:400 56px/1.15 Lora,serif;margin:0; }
+.layouts-heading p:not(.eyebrow) { color:#aab7c5;line-height:1.7;margin:0;max-width:440px; }
+.plan-tabs { display:flex;gap:16px;margin-bottom:32px; }
+.plan-tabs button { border:1px solid #304052;background:transparent;color:#f5f4f0;padding:16px 24px;border-radius:100px;font:inherit;cursor:pointer; }
+.plan-tabs button[aria-selected=true] { background:#F58220;border-color:#F58220;color:#091421; }
+.plans-grid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px; }
+.plan-card { background:#101E2E;border:1px solid #29394b;border-radius:16px;padding:32px; }
+.plan-image { height:260px;background:#fff;border-radius:8px;display:flex;justify-content:center;align-items:center;padding:24px; }
+.plan-image img { max-width:100%;max-height:100%;object-fit:contain; }
+.plan-meta { margin-top:32px; }
+.plan-meta span { display:block;color:#aab7c5;font-size:13px; }
+.plan-meta strong { display:block;font:400 40px/1.2 Lora,serif;margin-top:12px; }
+.plan-meta small { font:400 18px Manrope,sans-serif;color:#aab7c5; }
+.plan-select { display:flex;width:100%;justify-content:space-between;align-items:center;background:transparent;color:#F58220;border:0;border-top:1px solid #29394b;padding:20px 0 0;margin-top:24px;font:inherit;font-size:13px;cursor:pointer;text-align:left; }
+.selection-form { margin-top:64px;background:#101E2E;padding:32px;border-radius:16px; }
+.selection-form h3 { font:400 32px/1.25 Lora,serif;margin:0; }
+.selection-form p { color:#aab7c5;line-height:1.6; }
+.selection-fields { display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;align-items:end;margin-top:32px; }
+.selection-fields label { font-size:13px;display:grid;gap:12px; }
+.selection-fields input { min-width:0;width:100%;height:56px;border:1px solid #304052;background:#091421;color:#f5f4f0;border-radius:8px;padding:16px;font:inherit; }
+.selection-fields button { height:56px;background:#F58220;color:#091421;border:0;border-radius:8px;font:inherit;cursor:pointer; }
+.selection-note { font-size:12px;margin:20px 0 0; }
+.plans-empty { background:#101E2E;border-radius:16px;padding:32px;color:#aab7c5; }
+[hidden] { display:none !important; }
+@media(max-width:1200px) { .plans-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:800px) { .layouts-heading { display:block; }.layouts-heading h2 { font-size:40px; }.layouts-heading p:not(.eyebrow) { margin-top:24px; }.selection-fields { grid-template-columns:1fr;gap:24px; } }
+@media(max-width:520px) { .plans-grid { grid-template-columns:1fr; }.plan-tabs { gap:12px; }.plan-tabs button { padding:14px 18px;font-size:13px; }.layouts-heading h2 { font-size:34px; } }
+
+/* 6. Видео галерея — общая сетка 1440 / 96 / 64 / 32. */
+.video-grid { display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px; }
+.video-card { background:#101E2E;border:1px solid #29394b;border-radius:16px;overflow:hidden; }
+.video-featured { grid-row:span 2;display:flex;flex-direction:column; }
+.gallery-preview { display:block;position:relative;width:100%;height:230px;padding:0;border:0;background:#101E2E;cursor:pointer;overflow:hidden; }
+.video-featured .gallery-preview { height:auto;flex:1;min-height:480px; }
+.gallery-preview img { width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s; }
+.video-featured .gallery-preview img { position:absolute;inset:0; }
+.gallery-preview:hover img { transform:scale(1.025); }
+.gallery-play { position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:#F58220;display:grid;place-items:center;box-shadow:0 0 0 12px #09142135; }
+.gallery-play::after { content:'';border-left:17px solid #091421;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px; }
+.video-featured .gallery-play { width:80px;height:80px; }
+.gallery-label { position:absolute;left:32px;top:32px;padding:8px 12px;border-radius:100px;background:#091421bb;color:white;letter-spacing:2px;font:12px Manrope,sans-serif; }
+.gallery-copy { display:flex;justify-content:space-between;gap:32px;align-items:center;padding:32px; }
+.gallery-copy p { color:#aab7c5;font-size:13px;margin:0 0 12px; }
+.gallery-copy h3 { font:400 26px/1.3 Lora,serif;margin:0; }
+.gallery-copy>span { color:#F58220;font-size:24px; }
+.gallery-status { margin:32px 0 0;color:#aab7c5; }
+@media(max-width:800px) { .video-grid { grid-template-columns:1fr; }.video-featured { grid-row:auto; }.video-featured .gallery-preview { min-height:320px; }.gallery-preview { height:300px; } }
+@media(max-width:520px) { .gallery-preview,.video-featured .gallery-preview { height:230px;min-height:230px; }.gallery-copy h3 { font-size:23px; } }
+@media(prefers-reduced-motion:reduce) { .gallery-preview img { transition:none; } }
+
+/* Равные карточки видео в один ряд на десктопе. */
+.video-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.video-featured { grid-row:auto;display:block; }
+.gallery-preview,.video-featured .gallery-preview { height:auto;min-height:0;aspect-ratio:16 / 9; }
+.video-featured .gallery-preview img { position:static; }
+.video-featured .gallery-play { width:64px;height:64px; }
+.gallery-copy { align-items:center;min-height:164px; }
+@media(max-width:1000px) { .video-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { .video-grid { grid-template-columns:1fr; } }
+
+/* 7. Характеристики — 4 колонки, единые поля и интервалы. */
+.gallery-copy { min-height:120px; }
+.spec-grid { display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px; }
+.spec-card { background:#101E2E;border:1px solid #29394b;border-radius:16px;padding:32px; }
+.spec-card svg { width:48px;height:48px;color:#F58220;display:block;margin-bottom:32px; }
+.spec-card h3 { font:400 26px/1.3 Lora,serif;margin:0 0 20px; }
+.spec-card p { font-size:15px;line-height:1.75;color:#aab7c5;margin:0; }
+@media(max-width:1200px) { .spec-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { .spec-grid { grid-template-columns:1fr; } }
+
+/* 8. Преимущества — три колонки, общие интервалы 64 / 32. */
+.advantages-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px; }
+.advantage-item { background:#101E2E;border:1px solid #29394b;border-radius:16px;padding:32px;display:flex;align-items:center;gap:32px;min-height:148px; }
+.advantage-item svg { width:48px;height:48px;flex:0 0 48px;color:#F58220; }
+.advantage-item h3 { font:400 25px/1.35 Lora,serif;margin:0; }
+@media(max-width:1200px) { .advantages-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:600px) { .advantages-grid { grid-template-columns:1fr; }.advantage-item h3 { font-size:23px; } }
+
+/* 9–10. Компания и подвал — общая сетка проекта. */
+.site-header .button { font-weight:400; }
+.company-grid { display:grid;grid-template-columns:1fr 1fr;gap:32px; }
+.company-story { padding-right:64px; }
+.company-story h3 { font:400 36px/1.3 Lora,serif;margin:0 0 32px; }
+.company-story p { font-size:17px;line-height:1.85;color:#aab7c5;margin:0 0 24px; }
+.company-facts { background:#101E2E;border:1px solid #29394b;border-radius:16px;padding:32px; }
+.company-facts article { padding:0 0 32px;margin-bottom:32px;border-bottom:1px solid #29394b; }
+.company-facts article:last-child { border:0;padding:0;margin:0; }
+.company-facts strong { display:block;color:#F58220;font:400 32px/1.3 Lora,serif; }
+.company-facts article:first-child strong { font-size:64px; }
+.company-facts span { display:block;color:#aab7c5;margin-top:12px;font-size:15px; }
+.site-footer { border-top:1px solid #29394b; }
+.contacts-grid { display:grid;grid-template-columns:1fr 1fr;gap:32px; }
+.contact-label { font-size:12px;letter-spacing:2px;color:#aab7c5;margin:0 0 16px; }
+.contact-phone { font:400 38px/1.3 Lora,serif;display:inline-block;margin-bottom:32px; }
+.contact-email { display:inline-block;font-size:22px;margin-bottom:32px;overflow-wrap:anywhere; }
+.contact-socials { display:flex;gap:32px;margin:0 0 32px; }
+.contact-socials a { color:#F58220; }
+.footer-call { font-weight:400; }
+.contact-map { background:#101E2E;border:1px solid #29394b;border-radius:16px;overflow:hidden; }
+.contact-map img { display:block;width:100%;height:360px;object-fit:cover; }
+.map-caption { padding:32px;display:flex;justify-content:space-between;gap:16px; }
+.map-caption span:last-child { color:#aab7c5; }
+.footer-bottom { margin-top:64px;padding-top:32px;border-top:1px solid #29394b;display:flex;align-items:center;justify-content:space-between;gap:32px; }
+.footer-bottom p { color:#aab7c5;font-size:13px; }
+.footer-bottom>a:last-child { font-size:14px;color:#aab7c5; }
+@media(max-width:800px) { .company-grid,.contacts-grid { grid-template-columns:1fr; }.company-story { padding-right:0; }.footer-bottom { flex-wrap:wrap; }.contact-phone { font-size:32px; } }
+@media(max-width:520px) { .company-story h3 { font-size:30px; }.contact-map img { height:280px; }.map-caption { flex-direction:column; } }
+
+/* Первый экран: слайды изображениями, отдельные элементы управления. */
+.hero { height:100svh;min-height:0;padding:0;background:#091421; }
+.hero .site-header { flex-shrink:0;padding:0 48px;background:#091421; }
+.hero-slider { position:relative;flex:1;min-height:0;overflow:hidden; }
+.hero-slides { position:absolute;inset:0; }
+.hero-slide { display:block;width:100%;height:100%;object-fit:contain; }
+.slider-controls { position:absolute;bottom:32px;left:48px;right:48px;display:flex;justify-content:space-between;align-items:center;gap:32px; }
+.slider-cta { font-weight:400; }
+.slider-arrows { display:flex;gap:16px; }
+.slider-arrows button { width:56px;height:56px;border:1px solid #ffffff80;background:#091421bb;color:white;border-radius:50%;font-size:24px;cursor:pointer; }
+.slider-arrows button:disabled { opacity:.5;cursor:default; }
+.contact-map img { height:100%;min-height:360px; }
+@media(max-width:800px) { .hero .site-header { padding:0 32px; }.slider-controls { left:32px;right:32px;bottom:24px; } }
+@media(max-width:520px) { .hero .site-header { padding:0 20px; }.slider-controls { left:20px;right:20px;gap:12px;bottom:24px; }.slider-cta { padding:14px 18px;font-size:13px; }.slider-arrows { gap:8px; }.slider-arrows button { width:40px;height:40px; }.contact-map img { min-height:280px; } }
+
+/* Первый экран: слайдер баннеров на всю ширину.
+   Высота — по пропорции баннера 1920 × 700, без обрезки и пустых полос.
+   На очень широких мониторах высота ограничена экраном, баннер слегка подрезается сверху/снизу. */
+.hero { height:auto; min-height:0; }
+.hero-slider { flex:none; }
+.hero-slides { position:relative; inset:auto; width:100%; aspect-ratio:1920 / 700; max-height:calc(100svh - var(--header-h, 97px)); overflow:hidden; background:#091421; touch-action:pan-y; user-select:none; }
+.hero-slide { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 45%; opacity:0; transform:scale(1); transition:opacity 1.2s cubic-bezier(.4,0,.2,1), transform 7s linear; }
+.hero-slide.is-active { opacity:1; z-index:1; transform:scale(1.035); }
+.slider-controls { z-index:2; }
+/* Индикаторы с таймером */
+.slider-nav { display:flex; align-items:center; gap:16px; margin-left:auto; }
+.slider-dots { display:flex; gap:8px; }
+.slider-dot { width:48px; height:24px; padding:0; border:0; background:none; display:flex; align-items:center; cursor:pointer; }
+.slider-dot span { position:relative; display:block; width:100%; height:3px; border-radius:3px; background:#ffffff59; overflow:hidden; }
+.slider-dot span::after { content:""; position:absolute; inset:0; background:#F58220; transform:scaleX(0); transform-origin:left; }
+.slider-dot.is-active span::after { animation:slide-timer var(--slide-interval,6000ms) linear forwards; }
+.slider-dot:hover span { background:#ffffff99; }
+@keyframes slide-timer { to { transform:scaleX(1); } }
+.hero-slider:hover .slider-dot.is-active span::after,
+.hero-slider:focus-within .slider-dot.is-active span::after,
+.hero-slider.is-offscreen .slider-dot.is-active span::after { animation-play-state:paused; }
+.hero-slider.is-paused .slider-dot.is-active span::after { animation:none; transform:scaleX(1); }
+.slider-pause { width:40px; height:40px; border-radius:50%; border:1px solid #ffffff80; background:#091421bb; color:white; display:grid; place-items:center; cursor:pointer; position:relative; }
+.slider-pause::before, .slider-pause::after { content:""; position:absolute; top:13px; width:3px; height:14px; background:currentColor; border-radius:1px; }
+.slider-pause::before { left:15px; } .slider-pause::after { right:15px; }
+.slider-pause.is-play::before { left:16px; top:12px; width:0; height:0; background:none; border-left:12px solid currentColor; border-top:8px solid transparent; border-bottom:8px solid transparent; border-radius:0; }
+.slider-pause.is-play::after { display:none; }
+.slider-pause:hover { background:#F58220; border-color:#F58220; color:#091421; }
+.hero-slider.is-single .slider-nav, .hero-slider.is-single .slider-arrows { display:none; }
+/* Телефоны и планшеты: баннер низкий, поэтому управление — под ним, а не поверх */
+@media(max-width:800px) {
+ .slider-controls { position:static; padding:20px 32px 24px; flex-wrap:wrap; row-gap:16px; }
+ .slider-nav { order:3; width:100%; justify-content:center; margin-left:0; }
+}
+@media(max-width:520px) {
+ .slider-controls { padding:16px 20px 20px; }
+ .slider-dot { width:36px; }
+ .slider-pause { width:36px; height:36px; }
+ .slider-pause::before, .slider-pause::after { top:11px; } .slider-pause::before { left:13px; } .slider-pause::after { right:13px; }
+ .slider-pause.is-play::before { left:14px; top:10px; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-slide { transition:opacity .3s; transform:none !important; } }
+
+/* Баннеры 1920 × 700 широкие и невысокие: кнопки управления стоят под баннером,
+   чтобы не перекрывать текст и цены на картинке. */
+.slider-controls { position:static; padding:24px 48px; }
+@media(max-width:800px) { .slider-controls { padding:20px 32px 24px; } }
+@media(max-width:520px) { .slider-controls { padding:16px 20px 20px; } }
+
+/* Управление слайдером — поверх баннера: стрелки по бокам, индикаторы внизу по центру. */
+.slider-controls, .slider-controls.container { position:absolute; inset:0; max-width:none; margin:0; padding:0; display:block; pointer-events:none; z-index:2; }
+.slider-arrows { position:absolute; inset:0; display:block; }
+.slider-arrows button, .slider-nav { pointer-events:auto; }
+.slider-arrows button { position:absolute; top:calc(50% - 26px); width:52px; height:52px; border:1px solid #ffffff4d; background:#0914214d; -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); font-size:22px; opacity:.8; transition:opacity .3s, background-color .3s, border-color .3s, color .3s, transform .35s cubic-bezier(.22,1,.36,1); }
+[data-slide-prev] { left:24px; }
+[data-slide-next] { right:24px; }
+.hero-slider:hover .slider-arrows button { opacity:1; }
+[data-slide-prev]:not(:disabled):hover { transform:translateX(-3px); }
+[data-slide-next]:not(:disabled):hover { transform:translateX(3px); }
+.slider-nav { position:absolute; left:0; right:0; bottom:20px; width:max-content; margin:0 auto; padding:4px 6px 4px 18px; gap:12px; border-radius:100px; background:#0914215c; -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); border:1px solid #ffffff26; }
+.slider-nav .slider-pause { width:32px; height:32px; border-color:transparent; background:transparent; }
+.slider-nav .slider-pause::before, .slider-nav .slider-pause::after { top:10px; height:12px; }
+.slider-nav .slider-pause::before { left:11px; } .slider-nav .slider-pause::after { right:11px; }
+.slider-nav .slider-pause.is-play::before { left:12px; top:9px; border-left-width:11px; border-top-width:7px; border-bottom-width:7px; height:0; }
+.slider-nav .slider-pause:hover { background:#F58220; color:#091421; }
+@media(max-width:800px) {
+ .slider-controls, .slider-controls.container { position:absolute; padding:0; }
+ .slider-nav { order:0; width:max-content; margin:0 auto; bottom:10px; }
+ .slider-arrows button { width:40px; height:40px; top:calc(50% - 20px); font-size:18px; }
+ [data-slide-prev] { left:12px; } [data-slide-next] { right:12px; }
+}
+@media(max-width:520px) {
+ .slider-controls, .slider-controls.container { padding:0; }
+ /* На телефоне листают свайпом, стрелки не загораживают маленький баннер */
+ .slider-arrows { display:none; }
+ .slider-nav { bottom:8px; padding:0 4px 0 12px; gap:6px; }
+ .slider-dot { width:28px; height:20px; }
+ .slider-nav .slider-pause { width:26px; height:26px; }
+ .slider-nav .slider-pause::before, .slider-nav .slider-pause::after { top:8px; height:10px; }
+ .slider-nav .slider-pause::before { left:8px; } .slider-nav .slider-pause::after { right:8px; }
+ .slider-nav .slider-pause.is-play::before { left:9px; top:7px; border-left-width:9px; border-top-width:6px; border-bottom-width:6px; }
+}

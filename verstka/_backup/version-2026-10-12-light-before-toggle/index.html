@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="#F7F3EC" name="theme-color"/>
+  <title>
+   Pangaea — МЖК «Астана»
+  </title>
+  <link href="assets/css/styles.css" rel="stylesheet"/>
+  <link href="assets/css/animations.css" rel="stylesheet"/>
+  <link href="assets/css/forms.css" rel="stylesheet"/>
+  <link href="assets/css/extras.css" rel="stylesheet"/>
+  <link href="assets/css/theme-light.css" rel="stylesheet"/>
+  <script>
+   // Включаем анимации появления до первой отрисовки, чтобы блоки не мигали.
+   (function(d){if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){d.classList.add('anim');setTimeout(function(){if(!d.classList.contains('anim-ready'))d.classList.remove('anim');},3000);}})(document.documentElement);
+  </script>
+ </head>
+ <body>
+  <section class="hero" id="home">
+   <header class="site-header">
+    <div class="container header-inner">
+     <a aria-label="Pangaea — главная" class="brand" href="#home">
+      <svg aria-hidden="true" class="logo" viewBox="0 0 40 40">
+       <path d="M0 0h40v40H0z" fill="#FFB342">
+       </path>
+       <path d="M0 8h32v32H0z" fill="#F58220">
+       </path>
+       <path d="M0 16h24v24H0z" fill="#EF5A18">
+       </path>
+       <path d="M0 24h16v16H0z" fill="#D73716">
+       </path>
+       <path d="M0 32h8v8H0z" fill="#B92317">
+       </path>
+      </svg>
+      <span>
+       Pangaea
+      </span>
+     </a>
+     <nav aria-label="Основное меню" class="navigation">
+      <a href="#about">
+       О комплексе
+      </a>
+      <a href="#advantages">
+       Преимущества
+      </a>
+      <a href="#payment">
+       Условия приобретения жилья
+      </a>
+      <a href="#specifications">
+       Характеристики
+      </a>
+     </nav>
+     <a class="button button-small" data-modal-open="callback" href="#excursion-form">
+      Заказать звонок
+      <span aria-hidden="true">
+       ↗
+      </span>
+     </a>
+    </div>
+   </header>
+   <div aria-label="Предложения МЖК Астана" aria-roledescription="карусель" class="hero-slider" role="region">
+    <div class="hero-slides">
+     <!-- Слайды: просто добавьте/удалите <img class="hero-slide">. Размер баннера — 1920 × 700 px. -->
+     <img alt="МЖК Астана. Рассрочка от застройщика 0% до 36 месяцев, от 98 000 тенге в месяц" class="hero-slide" fetchpriority="high" height="700" src="assets/images/slide-1.webp" width="1920"/>
+     <img alt="МЖК Астана. Суперцена от 250 000 тенге за квадратный метр" class="hero-slide" decoding="async" height="700" src="assets/images/slide-2.webp" width="1920"/>
+    </div>
+    <div class="container slider-controls">
+     <div class="slider-nav">
+      <div aria-label="Выбор слайда" class="slider-dots">
+      </div>
+      <button aria-label="Остановить автопрокрутку" class="slider-pause" data-slide-pause="" type="button">
+      </button>
+     </div>
+     <div class="slider-arrows">
+      <button aria-label="Предыдущий слайд" data-slide-prev="" type="button">
+       ←
+      </button>
+      <button aria-label="Следующий слайд" data-slide-next="" type="button">
+       →
+      </button>
+     </div>
+    </div>
+   </div>
+  </section>
+  <section class="section" id="about">
+   <div class="container">
+    <div class="heading">
+     <div>
+      <p class="eyebrow">
+       О КОМПЛЕКСЕ
+      </p>
+      <h2 class="section-title">
+       Больше пространства
+       <br/>
+       <span>
+        для жизни.
+       </span>
+      </h2>
+     </div>
+     <p class="intro">
+      МЖК «Астана» — малоэтажный жилой комплекс в экологически чистом районе столицы, в микрорайоне Уркер.
+     </p>
+    </div>
+    <div class="main">
+     <div class="video">
+      <img alt="Дома МЖК Астана" src="assets/images/complex.webp"/>
+      <div class="play">
+      </div>
+      <div class="caption">
+       <span>
+        Знакомство с МЖК «Астана»
+       </span>
+       <span>
+        00:54
+       </span>
+      </div>
+     </div>
+     <div class="features" id="about-features">
+      <article class="card">
+       <div class="icon">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 34 34">
+         <path d="M5 30V12h12v18M3 12l8-8 8 8M17 15h6l8 15M20 15l-7 15M9 16h4v5H9">
+         </path>
+        </svg>
+       </div>
+       <div>
+        <h2>
+         Дворы без машин
+        </h2>
+        <p>
+         Детские и спортивные площадки, зоны отдыха, беседки и велодорожки.
+        </p>
+       </div>
+      </article>
+      <article class="card">
+       <div class="icon">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 34 34">
+         <path d="M28 5C10 5 5 12 5 22s13 12 18 3C27 18 28 5 28 5ZM7 29L22 13">
+         </path>
+        </svg>
+       </div>
+       <div>
+        <h2>
+         Свежий воздух каждый день
+        </h2>
+        <p>
+         Прогулки по лесопарковой зоне вдали от шума и загазованности центра города.
+        </p>
+       </div>
+      </article>
+      <article class="card">
+       <div class="icon">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 34 34">
+         <path d="M6 23h21v-9l-4-8H10l-4 8v9ZM6 14h21M10 23v5M23 23v5M10 18h2M22 18h2">
+         </path>
+        </svg>
+       </div>
+       <div>
+        <h2>
+         Удобная транспортная развязка
+        </h2>
+        <p>
+         Легко добраться до центра столицы.
+        </p>
+       </div>
+      </article>
+     </div>
+    </div>
+    <div class="infrastructure" id="infrastructure">
+     <p class="eyebrow">
+      ВСЁ НЕОБХОДИМОЕ РЯДОМ
+     </p>
+     <div class="infra-grid">
+      <article class="infra-card">
+       <div class="icon">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 34 34">
+         <path d="M2 12l15-8 15 8-15 8-15-8ZM8 16v9l9 5 9-5v-9M32 12v13">
+         </path>
+        </svg>
+       </div>
+       <div>
+        <h2>
+         Школа-гимназия №69
+        </h2>
+        <p>
+         В шаговой доступности
+        </p>
+       </div>
+      </article>
+      <article class="infra-card">
+       <div class="icon">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 34 34">
+         <path d="M6 4v16h22M6 12h22v8H6M6 20l8 8h10l4-8M10 30h1M25 30h1">
+         </path>
+        </svg>
+       </div>
+       <div>
+        <h2>
+         Государственный детский сад №62
+        </h2>
+       </div>
+      </article>
+      <article class="infra-card">
+       <div class="icon">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 34 34">
+         <path d="M13 4h8v9h9v8h-9v9h-8v-9H4v-8h9Z">
+         </path>
+        </svg>
+       </div>
+       <div>
+        <h2>
+         Поликлиника №12
+        </h2>
+       </div>
+      </article>
+      <article class="infra-card">
+       <div class="icon">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 34 34">
+         <path d="M7 4h20v23H7ZM7 16h20M11 27v4M23 27v4M11 22h1M23 22h1">
+         </path>
+        </svg>
+       </div>
+       <div>
+        <h2>
+         Автобусы №35, №36, №103
+        </h2>
+       </div>
+      </article>
+     </div>
+    </div>
+   </div>
+  </section>
+  <div aria-hidden="true" class="marquee">
+   <div class="marquee-track">
+    <span>Малоэтажный комплекс</span><i>✦</i><span class="is-outline">Дворы без машин</span><i>✦</i><span>Рассрочка 0%</span><i>✦</i><span class="is-outline">Столичная прописка</span><i>✦</i><span>Свой завод ЖБИ</span><i>✦</i><span class="is-outline">Экологичный район</span><i>✦</i>
+   </div>
+  </div>
+  <section class="section payment-section" id="payment">
+   <div class="container">
+    <div class="payment-heading">
+     <div>
+      <p class="eyebrow">
+       УСЛОВИЯ ПРИОБРЕТЕНИЯ
+      </p>
+      <h2 class="section-title">
+       Ваш дом —
+       <br/>
+       <span>
+        на ваших условиях
+       </span>
+      </h2>
+     </div>
+     <p>
+      Выберите подходящий
+      <br/>
+      вариант оплаты
+     </p>
+    </div>
+    <div class="payment-grid">
+     <article class="payment-card payment-featured">
+      <div class="payment-summary">
+       <h3>
+        Рассрочка 50/50
+       </h3>
+       <p class="payment-subtitle">
+        на 3 года
+       </p>
+       <p class="payment-price">
+        290 000
+        <span>
+         ₸/м²
+        </span>
+       </p>
+      </div>
+      <div class="payment-terms">
+       <p>
+        Первоначальный взнос — 50%
+       </p>
+       <p>
+        Остаток — равными платежами на 3 года
+       </p>
+       <div class="payment-tags">
+        <span>
+         Без процентов
+        </span>
+        <span>
+         Без подтверждения доходов
+        </span>
+       </div>
+      </div>
+      <span aria-hidden="true" class="payment-motif">
+       50/50
+      </span>
+      <a aria-label="Узнать о рассрочке 50/50" class="circle-link" data-modal-open="callback" data-topic="Рассрочка 50/50 на 3 года" href="#consultation">
+       →
+      </a>
+     </article>
+     <article class="payment-card payment-compact">
+      <div class="payment-summary">
+       <h3>
+        Рассрочка 30/70
+       </h3>
+       <p class="payment-price">
+        320 000
+        <span>
+         ₸/м²
+        </span>
+       </p>
+      </div>
+      <div class="payment-terms">
+       <p>
+        150 000 ₸ в месяц за любую площадь
+       </p>
+       <p>
+        Оставшаяся сумма — при выдаче ключей
+       </p>
+      </div>
+      <a aria-label="Узнать о рассрочке 30/70" class="circle-link" data-modal-open="callback" data-topic="Рассрочка 30/70" href="#consultation">
+       →
+      </a>
+     </article>
+     <article class="payment-card payment-compact">
+      <div class="payment-summary">
+       <h3>
+        100% оплата
+       </h3>
+       <p class="payment-price">
+        250 000
+        <span>
+         ₸/м²
+        </span>
+       </p>
+      </div>
+      <div class="payment-terms">
+       <p>
+        Полная оплата стоимости квартиры
+       </p>
+      </div>
+      <a aria-label="Узнать о полной оплате" class="circle-link" data-modal-open="callback" data-topic="100% оплата" href="#consultation">
+       →
+      </a>
+     </article>
+    </div>
+    <!-- Калькулятор рассрочки. Цены и условия — в assets/js/extras.js (объект PLANS). -->
+    <div class="calc" id="calculator">
+     <div class="calc-controls">
+      <p class="eyebrow calc-eyebrow">
+       КАЛЬКУЛЯТОР
+      </p>
+      <h3 class="calc-title">
+       Рассчитайте
+       <span>
+        свой платёж
+       </span>
+      </h3>
+      <div class="calc-group">
+       <span class="calc-label" id="calc-plan-label">
+        Вариант оплаты
+       </span>
+       <div aria-labelledby="calc-plan-label" class="calc-options" role="radiogroup">
+        <button aria-checked="true" data-calc-plan="5050" role="radio" type="button">
+         Рассрочка 50/50
+        </button>
+        <button aria-checked="false" data-calc-plan="3070" role="radio" type="button">
+         Рассрочка 30/70
+        </button>
+        <button aria-checked="false" data-calc-plan="full" role="radio" type="button">
+         100% оплата
+        </button>
+       </div>
+      </div>
+      <div class="calc-group">
+       <div class="calc-label-row">
+        <label class="calc-label" for="calc-area">
+         Площадь квартиры
+        </label>
+        <output class="calc-area-out" for="calc-area" id="calc-area-out">
+         32,3 м²
+        </output>
+       </div>
+       <input class="calc-range" id="calc-area" max="70" min="25" step="0.1" type="range" value="32.3"/>
+       <div aria-label="Планировки" class="calc-chips">
+        <button data-calc-area="27" type="button">
+         27,0 м²
+        </button>
+        <button data-calc-area="27.4" type="button">
+         27,4 м²
+        </button>
+        <button data-calc-area="32.3" type="button">
+         32,3 м²
+        </button>
+        <button data-calc-area="39.9" type="button">
+         39,9 м²
+        </button>
+       </div>
+      </div>
+     </div>
+     <div class="calc-result">
+      <span class="calc-result-label">
+       Стоимость квартиры
+      </span>
+      <strong class="calc-total" data-calc="total">
+       9 367 000 ₸
+      </strong>
+      <span class="calc-rate" data-calc="rate">
+       290 000 ₸/м²
+      </span>
+      <div aria-hidden="true" class="calc-bar">
+       <span class="calc-bar-fill">
+       </span>
+      </div>
+      <dl class="calc-rows">
+       <div>
+        <dt data-calc="l1">
+         Первоначальный взнос 50%
+        </dt>
+        <dd data-calc="v1">
+         4 683 500 ₸
+        </dd>
+       </div>
+       <div>
+        <dt data-calc="l2">
+         Ежемесячно, 36 мес. без %
+        </dt>
+        <dd data-calc="v2">
+         130 097 ₸
+        </dd>
+       </div>
+      </dl>
+      <button class="button calc-cta" data-modal-open="callback" data-topic="Расчёт из калькулятора" type="button">
+       Зафиксировать условия
+       <span aria-hidden="true">
+        →
+       </span>
+      </button>
+      <p class="calc-note">
+       Расчёт предварительный. Точную стоимость и график платежей подтвердит менеджер.
+      </p>
+     </div>
+    </div>
+    <div class="payment-action" id="consultation">
+     <button class="button" data-modal-open="callback" data-topic="Консультация по условиям оплаты" type="button">
+      Получить консультацию
+      <span aria-hidden="true">
+       →
+      </span>
+     </button>
+    </div>
+   </div>
+  </section>
+  <section aria-labelledby="social-title" class="section social-section" id="instagram">
+   <div class="container">
+    <div class="social-heading">
+     <div>
+      <p class="eyebrow">
+       МГНОВЕНИЯ ИЗ ЖИЗНИ
+      </p>
+      <h2 class="section-title" id="social-title">
+       Мы в Instagram
+      </h2>
+     </div>
+     <a class="social-profile" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+      Перейти в Instagram ↗
+     </a>
+    </div>
+    <div class="social-grid">
+     <article class="social-card">
+      <div class="instagram-header">
+       <a aria-label="Профиль mzhk.astana" class="instagram-avatar" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        M
+       </a>
+       <a class="instagram-account" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        mzhk.astana
+        <span>
+         Instagram
+        </span>
+       </a>
+       <a class="instagram-follow" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        Профиль ↗
+       </a>
+      </div>
+      <a aria-label="Открыть профиль mzhk.astana в Instagram" class="social-photo" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+       <img alt="Цветы у дома" height="900" loading="lazy" src="assets/images/post-1.webp" width="720"/>
+       <span aria-hidden="true" class="instagram-play">
+       </span>
+      </a>
+      <div class="social-copy">
+       <a class="instagram-more" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        Ещё больше в Instagram ↗
+       </a>
+       <div aria-hidden="true" class="instagram-actions">
+        <span style="display:flex;gap:18px">
+         <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z">
+          </path>
+         </svg>
+         <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+          <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5a9 9 0 0 1-.9-4A8.5 8.5 0 0 1 12.5 3H13a8.5 8.5 0 0 1 8 8v.5Z">
+          </path>
+         </svg>
+         <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+          <path d="m22 2-7 20-4-9-9-4 20-7Z M22 2 11 13">
+          </path>
+         </svg>
+        </span>
+        <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+         <path d="M6 3h12v18l-6-4-6 4V3Z">
+         </path>
+        </svg>
+       </div>
+       <p class="instagram-caption">
+        <strong>
+         mzhk.astana
+        </strong>
+        Цветы у дома
+       </p>
+      </div>
+     </article>
+     <article class="social-card">
+      <div class="instagram-header">
+       <a aria-label="Профиль mzhk.astana" class="instagram-avatar" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        M
+       </a>
+       <a class="instagram-account" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        mzhk.astana
+        <span>
+         Instagram
+        </span>
+       </a>
+       <a class="instagram-follow" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        Профиль ↗
+       </a>
+      </div>
+      <a aria-label="Открыть профиль mzhk.astana в Instagram" class="social-photo" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+       <img alt="Двор для всей семьи" height="900" loading="lazy" src="assets/images/post-2.webp" width="720"/>
+       <span aria-hidden="true" class="instagram-play">
+       </span>
+      </a>
+      <div class="social-copy">
+       <a class="instagram-more" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        Ещё больше в Instagram ↗
+       </a>
+       <div aria-hidden="true" class="instagram-actions">
+        <span style="display:flex;gap:18px">
+         <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z">
+          </path>
+         </svg>
+         <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+          <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5a9 9 0 0 1-.9-4A8.5 8.5 0 0 1 12.5 3H13a8.5 8.5 0 0 1 8 8v.5Z">
+          </path>
+         </svg>
+         <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+          <path d="m22 2-7 20-4-9-9-4 20-7Z M22 2 11 13">
+          </path>
+         </svg>
+        </span>
+        <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+         <path d="M6 3h12v18l-6-4-6 4V3Z">
+         </path>
+        </svg>
+       </div>
+       <p class="instagram-caption">
+        <strong>
+         mzhk.astana
+        </strong>
+        Двор для всей семьи
+       </p>
+      </div>
+     </article>
+     <article class="social-card">
+      <div class="instagram-header">
+       <a aria-label="Профиль mzhk.astana" class="instagram-avatar" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        M
+       </a>
+       <a class="instagram-account" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        mzhk.astana
+        <span>
+         Instagram
+        </span>
+       </a>
+       <a class="instagram-follow" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        Профиль ↗
+       </a>
+      </div>
+      <a aria-label="Открыть профиль mzhk.astana в Instagram" class="social-photo" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+       <img alt="Время для отдыха" height="900" loading="lazy" src="assets/images/post-3.webp" width="720"/>
+       <span aria-hidden="true" class="instagram-play">
+       </span>
+      </a>
+      <div class="social-copy">
+       <a class="instagram-more" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        Ещё больше в Instagram ↗
+       </a>
+       <div aria-hidden="true" class="instagram-actions">
+        <span style="display:flex;gap:18px">
+         <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z">
+          </path>
+         </svg>
+         <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+          <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5a9 9 0 0 1-.9-4A8.5 8.5 0 0 1 12.5 3H13a8.5 8.5 0 0 1 8 8v.5Z">
+          </path>
+         </svg>
+         <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+          <path d="m22 2-7 20-4-9-9-4 20-7Z M22 2 11 13">
+          </path>
+         </svg>
+        </span>
+        <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+         <path d="M6 3h12v18l-6-4-6 4V3Z">
+         </path>
+        </svg>
+       </div>
+       <p class="instagram-caption">
+        <strong>
+         mzhk.astana
+        </strong>
+        Время для отдыха
+       </p>
+      </div>
+     </article>
+     <article class="social-card">
+      <div class="instagram-header">
+       <a aria-label="Профиль mzhk.astana" class="instagram-avatar" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        M
+       </a>
+       <a class="instagram-account" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        mzhk.astana
+        <span>
+         Instagram
+        </span>
+       </a>
+       <a class="instagram-follow" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        Профиль ↗
+       </a>
+      </div>
+      <a aria-label="Открыть профиль mzhk.astana в Instagram" class="social-photo" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+       <img alt="Активная жизнь" height="900" loading="lazy" src="assets/images/post-4.webp" width="720"/>
+       <span aria-hidden="true" class="instagram-play">
+       </span>
+      </a>
+      <div class="social-copy">
+       <a class="instagram-more" href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        Ещё больше в Instagram ↗
+       </a>
+       <div aria-hidden="true" class="instagram-actions">
+        <span style="display:flex;gap:18px">
+         <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z">
+          </path>
+         </svg>
+         <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+          <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5a9 9 0 0 1-.9-4A8.5 8.5 0 0 1 12.5 3H13a8.5 8.5 0 0 1 8 8v.5Z">
+          </path>
+         </svg>
+         <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+          <path d="m22 2-7 20-4-9-9-4 20-7Z M22 2 11 13">
+          </path>
+         </svg>
+        </span>
+        <svg fill="none" height="22" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" width="22">
+         <path d="M6 3h12v18l-6-4-6 4V3Z">
+         </path>
+        </svg>
+       </div>
+       <p class="instagram-caption">
+        <strong>
+         mzhk.astana
+        </strong>
+        Активная жизнь
+       </p>
+      </div>
+     </article>
+    </div>
+   </div>
+  </section>
+  <section aria-labelledby="layouts-title" class="section" id="layouts">
+   <div class="container">
+    <div class="layouts-heading">
+     <div>
+      <p class="eyebrow">
+       ВАШЕ ЛИЧНОЕ ПРОСТРАНСТВО
+      </p>
+      <h2 id="layouts-title">
+       Планировки квартир
+      </h2>
+     </div>
+     <p>
+      Выберите пространство для своей жизни.
+      <br/>
+      Поможем подобрать квартиру и удобный вариант оплаты.
+     </p>
+    </div>
+    <div aria-label="Количество комнат" class="plan-tabs" role="tablist">
+     <button aria-controls="plans-one" aria-selected="true" data-plan-tab="one" id="tab-one" role="tab">
+      1-комнатные
+     </button>
+     <button aria-controls="plans-two" aria-selected="false" data-plan-tab="two" id="tab-two" role="tab" tabindex="-1">
+      2-комнатные
+     </button>
+    </div>
+    <div aria-labelledby="tab-one" class="plans-grid" id="plans-one" role="tabpanel">
+     <article class="plan-card">
+      <div class="plan-image">
+       <img alt="Схема однокомнатной квартиры 27,0 м²" loading="lazy" src="assets/images/plan-1.webp"/>
+      </div>
+      <div class="plan-meta">
+       <span>
+        1-комнатная квартира
+       </span>
+       <strong>
+        27,0
+        <small>
+         м²
+        </small>
+       </strong>
+      </div>
+      <button class="plan-select" data-plan="27,0" type="button">
+       Подобрать квартиру
+       <span>
+        ↗
+       </span>
+      </button>
+     </article>
+     <article class="plan-card">
+      <div class="plan-image">
+       <img alt="Схема однокомнатной квартиры 32,3 м²" loading="lazy" src="assets/images/plan-2.webp"/>
+      </div>
+      <div class="plan-meta">
+       <span>
+        1-комнатная квартира
+       </span>
+       <strong>
+        32,3
+        <small>
+         м²
+        </small>
+       </strong>
+      </div>
+      <button class="plan-select" data-plan="32,3" type="button">
+       Подобрать квартиру
+       <span>
+        ↗
+       </span>
+      </button>
+     </article>
+     <article class="plan-card">
+      <div class="plan-image">
+       <img alt="Схема однокомнатной квартиры 27,4 м²" loading="lazy" src="assets/images/plan-3.webp"/>
+      </div>
+      <div class="plan-meta">
+       <span>
+        1-комнатная квартира
+       </span>
+       <strong>
+        27,4
+        <small>
+         м²
+        </small>
+       </strong>
+      </div>
+      <button class="plan-select" data-plan="27,4" type="button">
+       Подобрать квартиру
+       <span>
+        ↗
+       </span>
+      </button>
+     </article>
+     <article class="plan-card">
+      <div class="plan-image">
+       <img alt="Схема однокомнатной квартиры 39,9 м²" loading="lazy" src="assets/images/plan-4.webp"/>
+      </div>
+      <div class="plan-meta">
+       <span>
+        1-комнатная квартира
+       </span>
+       <strong>
+        39,9
+        <small>
+         м²
+        </small>
+       </strong>
+      </div>
+      <button class="plan-select" data-plan="39,9" type="button">
+       Подобрать квартиру
+       <span>
+        ↗
+       </span>
+      </button>
+     </article>
+    </div>
+    <div aria-labelledby="tab-two" class="plans-empty" hidden="" id="plans-two" role="tabpanel">
+     Подберём двухкомнатную квартиру под ваши пожелания. Оставьте контакты в форме ниже.
+    </div>
+    <form class="selection-form" data-lead-form="selection" data-topic="Подбор квартиры" id="selection-form" novalidate="">
+     <div>
+      <h3>
+       Поможем выбрать квартиру
+      </h3>
+      <p>
+       Оставьте контакты для консультации.
+      </p>
+     </div>
+     <div class="selection-fields">
+      <label>
+       Ваше имя
+       <input autocomplete="given-name" name="name" placeholder="Как к вам обращаться" required=""/>
+      </label>
+      <label>
+       Телефон
+       <input autocomplete="tel" name="phone" inputmode="tel" placeholder="+7 (___) ___-__-__" required="" type="tel"/>
+      </label>
+      <button type="submit">
+       Подобрать квартиру ↗
+      </button>
+     </div>
+     <p class="selection-note">
+      Демонстрационная форма: отправка заявки пока не подключена.
+     </p>
+     <p hidden="" id="selection-result" role="status">
+     </p>
+    </form>
+   </div>
+  </section>
+  <section aria-labelledby="video-gallery-title" class="section" id="video-gallery">
+   <div class="container">
+    <div class="layouts-heading">
+     <div>
+      <p class="eyebrow">
+       ЗНАКОМСТВО С КОМПЛЕКСОМ
+      </p>
+      <h2 id="video-gallery-title">
+       Видео галерея
+      </h2>
+     </div>
+     <p>
+      Посмотрите, как выглядит ваш будущий дом,
+      <br/>
+      его дворы и пространства для отдыха.
+     </p>
+    </div>
+    <div class="video-grid">
+     <article class="video-card video-featured">
+      <button aria-label="Открыть видео: Знакомство с Pangaea" class="gallery-preview" data-gallery-video="" type="button">
+       <img alt="Дома и территория комплекса" loading="lazy" src="assets/images/hero.webp"/>
+       <span aria-hidden="true" class="gallery-play">
+       </span>
+       <span class="gallery-label">
+        ВИДЕО
+       </span>
+      </button>
+      <div class="gallery-copy">
+       <div>
+        <h3>
+         Знакомство с Pangaea
+        </h3>
+       </div>
+       <span aria-hidden="true">
+        ↗
+       </span>
+      </div>
+     </article>
+     <article class="video-card">
+      <button aria-label="Открыть видео: Пространство для жизни" class="gallery-preview" data-gallery-video="" type="button">
+       <img alt="Прогулка по двору" loading="lazy" src="assets/images/post-2.webp"/>
+       <span aria-hidden="true" class="gallery-play">
+       </span>
+       <span class="gallery-label">
+        ВИДЕО
+       </span>
+      </button>
+      <div class="gallery-copy">
+       <div>
+        <h3>
+         Пространство для жизни
+        </h3>
+       </div>
+       <span aria-hidden="true">
+        ↗
+       </span>
+      </div>
+     </article>
+     <article class="video-card">
+      <button aria-label="Открыть видео: Место для отдыха" class="gallery-preview" data-gallery-video="" type="button">
+       <img alt="Общественные пространства" loading="lazy" src="assets/images/post-3.webp"/>
+       <span aria-hidden="true" class="gallery-play">
+       </span>
+       <span class="gallery-label">
+        ВИДЕО
+       </span>
+      </button>
+      <div class="gallery-copy">
+       <div>
+        <h3>
+         Место для отдыха
+        </h3>
+       </div>
+       <span aria-hidden="true">
+        ↗
+       </span>
+      </div>
+     </article>
+    </div>
+    <p class="gallery-status" hidden="" role="status">
+     Это превью видео галереи. Ролики ещё не подключены.
+    </p>
+   </div>
+  </section>
+  <section aria-labelledby="specifications-title" class="section" id="specifications">
+   <div class="container">
+    <div class="layouts-heading">
+     <div>
+      <p class="eyebrow">
+       КАЧЕСТВО В ДЕТАЛЯХ
+      </p>
+      <h2 id="specifications-title">
+       Характеристики
+      </h2>
+     </div>
+    </div>
+    <div class="spec-grid">
+     <article class="spec-card">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 32 32">
+       <path d="M4 5h24v22H4z M4 12h24 M4 19h24 M12 5v7 M21 12v7 M12 19v8">
+       </path>
+      </svg>
+      <h3>
+       Стены
+      </h3>
+      <p>
+       Газоблок «Экотон»: 1-й этаж — 400 мм, 2-й и 3-й — 300 мм. Между этажами — плиты перекрытия 17 см.
+      </p>
+     </article>
+     <article class="spec-card">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 32 32">
+       <path d="M3 23h26v6H3z M7 17h18v6 M11 11h10v6 M16 3v8">
+       </path>
+      </svg>
+      <h3>
+       Фундамент
+      </h3>
+      <p>
+       Ленточный фундамент высотой 50 см и шириной 70 см. Сверху — ФБС высотой 50 см, далее забутовочная кладка в два кирпича.
+      </p>
+     </article>
+     <article class="spec-card">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 32 32">
+       <path d="M5 4h16v24H5z M10 4v24 M16 4v24 M25 5v22 M23 9h5 M23 22h5">
+       </path>
+      </svg>
+      <h3>
+       Облицовка стен
+      </h3>
+      <p>
+       Армирующая сетка, минеральная вата 20 см на клею или креплениях, затем штукатурка. Внутри — гипсовая штукатурка 2–5 см; потолки не штукатурятся.
+      </p>
+     </article>
+     <article class="spec-card">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 32 32">
+       <path d="M5 4h22v24H5z M8 7h16v18H8z M16 7v18 M8 19h16 M3 28h26">
+       </path>
+      </svg>
+      <h3>
+       Окна
+      </h3>
+      <p>
+       Металлопластиковые окна с 3–5-камерным профилем и тремя стёклами.
+      </p>
+     </article>
+     <article class="spec-card">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 32 32">
+       <path d="M6 29V3h20v26 M10 29V7h12v22 M18 18h3 M3 29h26">
+       </path>
+      </svg>
+      <h3>
+       Двери
+      </h3>
+      <p>
+       Металлические двери в подъезд и в квартиру.
+      </p>
+     </article>
+     <article class="spec-card">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 32 32">
+       <path d="M3 27 8 5h16l5 22H3z M11 5 8 27 M16 5v22 M21 5l3 22 M6 15h20 M4 23h24">
+       </path>
+      </svg>
+      <h3>
+       Кровля
+      </h3>
+      <p>
+       Металлочерепица. На 3-м этаже — доски 5 × 20 или OSB 9–12 мм, слои паро- и гидроизоляционной плёнки, утеплитель 20 см.
+      </p>
+     </article>
+     <article class="spec-card">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 32 32">
+       <path d="M5 4h13v24H5z M25 4v24 M22 4h6 M22 28h6 M23 8l2-4 2 4 M23 24l2 4 2-4">
+       </path>
+      </svg>
+      <h3>
+       Высота потолков
+      </h3>
+      <p>
+       2,7 м
+      </p>
+     </article>
+     <article class="spec-card">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 32 32">
+       <path d="M3 28h26V4h-6v6h-6v6h-6v6H5v6 M3 18 25 2">
+       </path>
+      </svg>
+      <h3>
+       Лестница
+      </h3>
+      <p>
+       Железобетонная лестница.
+      </p>
+     </article>
+    </div>
+   </div>
+  </section>
+  <section aria-labelledby="advantages-title" class="section" id="advantages">
+   <div class="container">
+    <div class="layouts-heading">
+     <div>
+      <p class="eyebrow">
+       БОЛЬШЕ, ЧЕМ КВАРТИРА
+      </p>
+      <h2 id="advantages-title">
+       Преимущества
+      </h2>
+     </div>
+    </div>
+    <div class="advantages-grid">
+     <article class="advantage-item">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 34 34">
+       <path d="M16 28V12 M16 18C5 18 4 8 4 8c10 0 12 10 12 10Z M16 12S17 3 28 3c0 0-1 10-12 9">
+       </path>
+      </svg>
+      <h3>
+       Хорошая экология
+      </h3>
+     </article>
+     <article class="advantage-item">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 34 34">
+       <path d="M4 14h15a8 8 0 0 1 8 8v2h-7v-2a2 2 0 0 0-2-2H4z M4 11v12 M13 14V8 M8 8h10 M24 26c-5 5-5 7 0 7s5-2 0-7">
+       </path>
+      </svg>
+      <h3>
+       Городские коммуникации
+      </h3>
+     </article>
+     <article class="advantage-item">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 34 34">
+       <path d="M7 26 25 6 M9 5a4 4 0 1 0 0 8 4 4 0 0 0 0-8 M23 19a4 4 0 1 0 0 8 4 4 0 0 0 0-8">
+       </path>
+      </svg>
+      <h3>
+       Рассрочка на 3 года без процентов
+      </h3>
+     </article>
+     <article class="advantage-item">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 34 34">
+       <path d="M5 29V4h22v25 M3 29h26 M10 9h3v4h-3z M19 9h3v4h-3z M10 17h3v4h-3z M19 17h3v4h-3z M14 29v-5h4v5">
+       </path>
+      </svg>
+      <h3>
+       Малоэтажность
+      </h3>
+     </article>
+     <article class="advantage-item">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 34 34">
+       <path d="M4 5h24v22H4z M12 5v22 M20 5v22 M4 16h24">
+       </path>
+      </svg>
+      <h3>
+       По 6 квартир на площадке
+      </h3>
+     </article>
+     <article class="advantage-item">
+      <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" viewBox="0 0 34 34">
+       <path d="M7 3h12l7 7v19H7z M19 3v8h7 M11 16h11 M11 21h11 M11 25h7">
+       </path>
+      </svg>
+      <h3>
+       Столичная прописка
+      </h3>
+     </article>
+    </div>
+    <form class="selection-form" data-lead-form="excursion" data-topic="Запись на экскурсию" id="excursion-form" novalidate="">
+     <div>
+      <h3>
+       Увидеть всё своими глазами
+      </h3>
+      <p>
+       Оставьте заявку — мы перезвоним и согласуем время экскурсии по комплексу.
+      </p>
+     </div>
+     <div class="selection-fields">
+      <label>
+       Ваше имя
+       <input autocomplete="given-name" name="name" placeholder="Как к вам обращаться" required=""/>
+      </label>
+      <label>
+       Телефон
+       <input autocomplete="tel" name="phone" inputmode="tel" placeholder="+7 (___) ___-__-__" required="" type="tel"/>
+      </label>
+      <button type="submit">
+       Записаться на экскурсию ↗
+      </button>
+     </div>
+     <p class="selection-note">
+      Демонстрационная форма: отправка заявки пока не подключена.
+     </p>
+     <p hidden="" id="excursion-result" role="status">
+     </p>
+    </form>
+   </div>
+  </section>
+  <section aria-labelledby="company-title" class="section" id="company">
+   <div class="container">
+    <div class="layouts-heading">
+     <div>
+      <p class="eyebrow">
+       ЗАСТРОЙЩИК КОМПЛЕКСА
+      </p>
+      <h2 id="company-title">
+       О компании
+      </h2>
+     </div>
+    </div>
+    <div class="company-grid">
+     <div class="company-story">
+      <h3>
+       Строительная компания
+       <br/>
+       ТОО «Pangaea»
+      </h3>
+      <p class="company-lead" data-word-reveal="">
+       Мы строим малоэтажные жилые комплексы в Астане и предлагаем жильё в жилом массиве «Ильинка». В работе используем современные технологии, уделяя внимание удобству и надёжности домов.
+      </p>
+      <p>
+       Выполняем полный цикл работ — от идеи проекта и строительно-монтажных работ до ввода объекта в эксплуатацию. Собственный завод производит железобетонные изделия для нашего комплекса и строительного рынка Астаны.
+      </p>
+     </div>
+     <div class="company-facts">
+      <article>
+       <strong>
+        2015
+       </strong>
+       <span>
+        Год основания компании
+       </span>
+      </article>
+      <article>
+       <strong>
+        Малоэтажное
+        <br/>
+        строительство
+       </strong>
+       <span>
+        Основная сфера деятельности
+       </span>
+      </article>
+      <article>
+       <strong>
+        Собственный завод
+       </strong>
+       <span>
+        Производство железобетонных изделий
+       </span>
+      </article>
+     </div>
+    </div>
+   </div>
+  </section>
+  <footer class="section site-footer" id="contacts">
+   <div class="container">
+    <div class="layouts-heading">
+     <div>
+      <p class="eyebrow">
+       ВСЕГДА НА СВЯЗИ
+      </p>
+      <h2>
+       Контакты
+      </h2>
+     </div>
+    </div>
+    <div class="contacts-grid">
+     <div class="contact-info">
+      <p class="contact-label">
+       ТЕЛЕФОН
+      </p>
+      <a class="contact-phone" href="tel:+77718320303">
+       +7 771 832 03 03
+      </a>
+      <p class="contact-label">
+       ЭЛЕКТРОННАЯ ПОЧТА
+      </p>
+      <a class="contact-email" href="mailto:mzhk.astana@mail.ru">
+       mzhk.astana@mail.ru
+      </a>
+      <p class="contact-label">
+       МЫ В СОЦИАЛЬНЫХ СЕТЯХ
+      </p>
+      <div class="contact-socials">
+       <a href="https://www.instagram.com/mzhk.astana/" rel="noopener noreferrer" target="_blank">
+        Instagram ↗
+       </a>
+       <a href="https://wa.me/77718320303" rel="noopener noreferrer" target="_blank">
+        WhatsApp ↗
+       </a>
+      </div>
+      <a class="button footer-call" data-modal-open="callback" href="#excursion-form">
+       Заказать звонок ↗
+      </a>
+     </div>
+     <div class="contact-map">
+      <img alt="Местоположение МЖК Астана на карте из предоставленного примера" loading="lazy" src="assets/images/location.webp"/>
+     </div>
+    </div>
+    <div class="footer-bottom">
+     <a aria-label="Pangaea — наверх" class="brand" href="#">
+      <svg aria-hidden="true" class="logo" viewBox="0 0 40 40">
+       <path d="M0 0h40v40H0z" fill="#FFB342">
+       </path>
+       <path d="M0 8h32v32H0z" fill="#F58220">
+       </path>
+       <path d="M0 16h24v24H0z" fill="#EF5A18">
+       </path>
+       <path d="M0 24h16v16H0z" fill="#D73716">
+       </path>
+       <path d="M0 32h8v8H0z" fill="#B92317">
+       </path>
+      </svg>
+      <span>
+       Pangaea
+      </span>
+     </a>
+     <p>
+      © 2026 ТОО «Pangaea»
+     </p>
+     <a href="#">
+      Наверх ↑
+     </a>
+    </div>
+   </div>
+  </footer>
+  <!-- Модальное окно «Заказать звонок». Открывается кнопками с атрибутом data-modal-open="callback";
+       data-topic="…" — тема заявки, показывается в окне и уходит менеджеру. -->
+  <dialog aria-labelledby="callback-title" class="modal" id="callback-modal">
+   <div class="modal-card">
+    <button aria-label="Закрыть" class="modal-close" data-modal-close="" type="button">
+    </button>
+    <form class="modal-form" data-lead-form="callback" novalidate="">
+     <h2 class="modal-title" id="callback-title">
+      <span>
+       Бесплатная
+      </span>
+      консультация
+     </h2>
+     <p class="modal-lead">
+      Ответим на вопросы, поможем выбрать квартиру и способ оплаты
+     </p>
+     <p class="modal-topic" hidden="">
+     </p>
+     <input name="topic" type="hidden"/>
+     <label class="modal-field">
+      <span>
+       Ваше имя
+      </span>
+      <input autocomplete="given-name" minlength="2" name="name" placeholder="Как к вам обращаться" required=""/>
+      <small class="field-error">
+       Введите имя
+      </small>
+     </label>
+     <label class="modal-field">
+      <span>
+       Телефон
+      </span>
+      <input autocomplete="tel" inputmode="tel" name="phone" placeholder="+7 (___) ___-__-__" required="" type="tel"/>
+      <small class="field-error">
+       Введите номер полностью
+      </small>
+     </label>
+     <button class="button modal-submit" type="submit">
+      Оставить заявку
+      <span aria-hidden="true">
+       →
+      </span>
+     </button>
+     <p class="modal-consent">
+      Оставляя заявку, вы соглашаетесь с
+      <a href="privacy.html" target="_blank">
+       политикой конфиденциальности и обработки данных
+      </a>
+     </p>
+    </form>
+    <div aria-live="polite" class="modal-success" hidden="">
+     <svg aria-hidden="true" class="modal-success-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="29">
+      </circle>
+      <path d="M20 33l8 8 16-17">
+      </path>
+     </svg>
+     <h2 class="modal-title">
+      Спасибо!
+     </h2>
+     <p class="modal-success-text">
+      Заявка принята. Менеджер перезвонит вам в ближайшее рабочее время.
+     </p>
+     <button class="button modal-done" data-modal-close="" type="button">
+      Хорошо
+     </button>
+    </div>
+   </div>
+  </dialog>
+  <script defer="True" src="assets/js/main.js">
+  </script>
+  <script defer="" src="assets/js/animations.js">
+  </script>
+  <script defer="" src="assets/js/forms.js">
+  </script>
+  <script defer="" src="assets/js/extras.js">
+  </script>
+ </body>
+</html>

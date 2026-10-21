@@ -1,0 +1,15 @@
+/* Дополнения для блоков, которые наполняются из админки (картинки вместо inline-SVG, видео, карта). */
+.icon img { width: 48px; height: 48px; display: block; object-fit: contain; }
+.infra-card .icon img { width: 40px; height: 40px; }
+.spec-card > img { width: 48px; height: 48px; display: block; object-fit: contain; margin-bottom: 32px; }
+.advantage-item > img { width: 48px; height: 48px; flex: 0 0 48px; object-fit: contain; }
+.payment-terms ul { list-style: none; margin: 0; padding: 0; }
+.payment-terms li { margin: 0 0 .5em; }
+.spec-card p :is(p, ul) { margin: 0; }
+.company-story :is(p, ul) { margin-bottom: 1em; }
+.contact-map iframe { display: block; width: 100%; height: 392px; border: 0; }
+.video { cursor: pointer; }
+.video.is-playing { cursor: auto; }
+.video iframe, .gallery-preview.is-playing iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.gallery-preview.is-playing { cursor: auto; }
+.form-flash { margin: 0; }
