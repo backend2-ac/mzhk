@@ -1,5 +1,10 @@
 
-<?php $editor_id = [3, 11]; ?>
+<?php
+$editor_id = [3, 11];
+$isInstagram = (bool)preg_match('/^social_post_[1-4]$/D', (string)$data['alias']);
+$post = $isInstagram ? \App\Service\InstagramPost::forSlot((string)$data['alias'], (string)$data['body']) : [];
+$isRussian = !isset($_GET['lang']) || $_GET['lang'] === 'ru';
+?>
 
 <section class="content-header">
 	<div class="container-fluid">
@@ -29,14 +34,24 @@
 
 					<div class="form-group">
 						<label for="inputTitle">Название</label>
-						<?php if( isset($_GET['lang']) && $_GET['lang'] == 'ru' ): ?>
+						<?php if( $isRussian ): ?>
 							<?= $this->Form->text('title', array('id' => 'inputTitle', 'class' => 'form-control', 'required' => 'required')); ?>
 						<?php else: ?>
 							<?= $this->Form->text('title', array('id' => 'inputTitle', 'class' => 'form-control', 'required' => 'required', 'disabled' => 'disabled')); ?>
 						<?php endif; ?>
 					</div>
 
-					<?php if( !$data['img'] ): ?>
+					<?php if( $isInstagram ): ?>
+                        <div class="form-group">
+                            <label for="instagramEmbed">Ссылка или код вставки Instagram</label>
+                            <?= $this->Form->textarea('instagram_embed', ['id' => 'instagramEmbed', 'class' => 'form-control', 'value' => $post['url'], 'rows' => 4]); ?>
+                            <small class="form-text text-muted">Вставьте ссылку на публичную публикацию/Reel или код из меню Instagram «Встроить». Видео будет проигрываться на сайте. Автор должен разрешить встраивание. Если оставить поле пустым, будет показана фотография ниже.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="socialCaption">Подпись к фотографии</label>
+                            <?= $this->Form->textarea('social_caption', ['id' => 'socialCaption', 'class' => 'form-control', 'value' => $post['caption']]); ?>
+                        </div>
+					<?php else: ?>
 						<?php if( in_array($data['id'], $editor_id) ): ?>
 							<div class="form-group">
 								<label for="editor">Описание</label>
@@ -51,14 +66,14 @@
 					<?php endif; ?>
 
 
-					<?php if( isset($_GET['lang']) && $_GET['lang'] == 'ru' && $data['img'] ): ?>
+					<?php if( $isRussian ): ?>
 						<div class="form-group">
 							<label for="reviewimg">Картинка  </label>
 							<?php if(!empty($data['img'])): ?>
 								<div class="model_info_img">
 									<div class="model_item_container">
 										<div class="model_item">
-											<img src="/img/comps/thumbs/<?=$data['img']?>">
+											<img src="/img/comps/thumbs/<?=h($data['img'])?>" alt="Текущая картинка">
 										</div>
 									</div>
 								</div>

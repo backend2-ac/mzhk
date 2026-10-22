@@ -22,6 +22,10 @@
     const range = calc.querySelector('#calc-area');
     const out = calc.querySelector('#calc-area-out');
     const planButtons = [...calc.querySelectorAll('[data-calc-plan]')];
+    planButtons.forEach(button => {
+      const key = button.dataset.calcPlan;
+      if (PLANS[key]) PLANS[key].name = button.textContent.trim();
+    });
     const chips = [...calc.querySelectorAll('[data-calc-area]')];
     const el = key => calc.querySelector(`[data-calc="${key}"]`);
     const bar = calc.querySelector('.calc-bar-fill');

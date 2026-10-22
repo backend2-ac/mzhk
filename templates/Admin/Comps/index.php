@@ -45,7 +45,15 @@
         				<b><?=$item['title']?></b>
         			</td>
         			<td>
-                <?php if( $item['id'] != 11 ): ?>
+                <?php if (preg_match('/^social_post_[1-4]$/D', (string)$item['alias'])): ?>
+                    <?php $post = \App\Service\InstagramPost::forSlot((string)$item['alias'], (string)$item['body']); ?>
+                    <?php if ($post['url'] !== ''): ?>
+                        <a href="<?= h($post['url']) ?>" target="_blank" rel="noopener noreferrer">Публикация Instagram</a>
+                    <?php elseif ($item['img']): ?>
+                        <img src="/img/comps/thumbs/<?= h($item['img']) ?>" width="150" alt="">
+                    <?php endif; ?>
+                    <p><?= h(strip_tags($post['caption'])) ?></p>
+                <?php elseif( $item['id'] != 11 ): ?>
           				<?php if( $item['img'] ): ?>
           					<img src="/img/comps/thumbs/<?= $item['img'] ?>" width="150" alt="">
           				<?php else: ?>

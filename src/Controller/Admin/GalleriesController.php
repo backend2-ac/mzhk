@@ -49,18 +49,19 @@ class GalleriesController extends AppController{
 
             if( isset($fileName) && $fileName ){
                 $entity->img = $imageObject;
-                if( $entity->get('img') == false ){
+                if( $entity->get('img') === false && !$entity->getError('img') ){
                     $entity->setError('img', [__('Ошибка валидации изображения')]);
                 }
             }
             if( isset($fileNameImages) && $fileNameImages ){
                 $entity->images = $imagesObject;
-                if( $entity->get('images') == false ){
+                if( $entity->get('images') === false && !$entity->getError('images') ){
                     $entity->setError('images', [__('Ошибка валидации изображения')]);
                 }
             }
 
             if( $entity->getErrors() ){
+                $this->_imgDelete($entity->uploadedImages());
                 $errors = $entity->getErrors();
                 foreach( $errors as $index => $err ){
                     $this->Flash->error( $err[array_key_first($err)] );
@@ -73,6 +74,7 @@ class GalleriesController extends AppController{
                 $this->_cacheDelete();
                 return $this->redirect( $this->referer() );
             } else{
+                $this->_imgDelete($entity->uploadedImages());
                 $this->Flash->error(__('Ошибка сохранения данных'));
             }
         }
@@ -103,18 +105,19 @@ class GalleriesController extends AppController{
 
             if( isset($fileName) && $fileName ){
                 $entity->img = $imageObject;
-                if( $entity->get('img') == false ){
+                if( $entity->get('img') === false && !$entity->getError('img') ){
                     $entity->setError('img', [__('Ошибка валидации изображения')]);
                 }
             }
             if( isset($fileNameImages) && $fileNameImages ){
                 $entity->images = $imagesObject;
-                if( $entity->get('images') == false ){
+                if( $entity->get('images') === false && !$entity->getError('images') ){
                     $entity->setError('images', [__('Ошибка валидации изображения')]);
                 }
             }
 
             if( $entity->getErrors() ){
+                $this->_imgDelete($entity->uploadedImages());
                 $errors = $entity->getErrors();
                 foreach( $errors as $index => $err ){
                     $this->Flash->error( $err[array_key_first($err)] );
@@ -123,13 +126,16 @@ class GalleriesController extends AppController{
             }
 
             $new_data = $entity->toArray();
+            $previousImages = [$data->get('img'), $data->get('images')];
             $this->$model->patchEntity($data, $new_data);
 
             if ($this->$model->save($data)) {
+                $this->_imgDelete($previousImages);
                 $this->Flash->success(__('Изменения сохранены'));
                 $this->_cacheDelete();
                 return $this->redirect( $this->referer() );
             }
+            $this->_imgDelete($entity->uploadedImages());
             $this->Flash->error(__('Ошибка сохранения'));
         }
 
@@ -144,6 +150,7 @@ class GalleriesController extends AppController{
 
         $img_del = [];
         $img_del[] = $data['img'];
+        $img_del[] = $data->get('images');
 
         if ($this->$model->delete($data)) {
             $this->Flash->success(__('Элемент успешно удален'));
@@ -161,21 +168,7 @@ class GalleriesController extends AppController{
     }
 
     protected function _imgDelete($img_del = null){
-        if( $img_del ){
-            foreach( $img_del as $img_name ){
-                if( $img_name ){
-                    $fileName = WWW_ROOT.'img'.DS.'galleries'.DS.$img_name;
-                    $fileNameThumbs = WWW_ROOT.'img'.DS.'galleries'.DS. $img_name;
-                    if( file_exists($fileName) ){
-                        unlink($fileName);
-                    }
-                    if( file_exists($fileNameThumbs) ){
-                        unlink($fileNameThumbs);
-                    }
-                    clearstatcache();
-                }
-            }
-        }
+        \App\Service\ImageStorage::deleteUnused($this->Galleries, 'galleries', $img_del ?? []);
     }
 }
 

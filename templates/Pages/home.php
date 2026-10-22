@@ -78,11 +78,7 @@ foreach( array_merge($houses, $houses_2) as $item ){
     }
 }
 $calcNum = fn(string $alias): string => preg_replace('/[^0-9.]/', '', $plain($alias));
-$planNames = [
-    $services[0]['name'] ?? 'Рассрочка 50/50',
-    $services[1]['name'] ?? 'Рассрочка 30/70',
-    $services[2]['name'] ?? '100% оплата',
-];
+$planNames = \App\Service\PaymentPlans::names($services);
 
 // Бегущая строка: по строке на пункт, «~» в начале — контурный.
 $marquee = array_values(array_filter(array_map('trim', preg_split('/\R/u', strip_tags($t('marquee'))))));
@@ -265,9 +261,9 @@ $marquee = array_values(array_filter(array_map('trim', preg_split('/\R/u', strip
         Вариант оплаты
        </span>
        <div aria-labelledby="calc-plan-label" class="calc-options" role="radiogroup">
-        <button aria-checked="true" data-calc-plan="5050" role="radio" type="button"><?= h($planNames[0]) ?></button>
-        <button aria-checked="false" data-calc-plan="3070" role="radio" type="button"><?= h($planNames[1]) ?></button>
-        <button aria-checked="false" data-calc-plan="full" role="radio" type="button"><?= h($planNames[2]) ?></button>
+        <button aria-checked="true" data-calc-plan="5050" role="radio" type="button"><?= h($planNames['5050']) ?></button>
+        <button aria-checked="false" data-calc-plan="3070" role="radio" type="button"><?= h($planNames['3070']) ?></button>
+        <button aria-checked="false" data-calc-plan="full" role="radio" type="button"><?= h($planNames['full']) ?></button>
        </div>
       </div>
       <div class="calc-group">
@@ -525,7 +521,22 @@ $marquee = array_values(array_filter(array_map('trim', preg_split('/\R/u', strip
      </a>
     </div>
     <div class="social-grid">
-<?php for( $n = 1; $n <= 4; $n++ ): $postImg = $cimg('social_post_' . $n); if( $postImg === '' ) continue; $caption = $plain('social_post_' . $n); ?>
+<?php $hasInstagramEmbed = false;
+for( $n = 1; $n <= 4; $n++ ):
+    $postImg = $cimg('social_post_' . $n);
+    $post = \App\Service\InstagramPost::forSlot('social_post_' . $n, $t('social_post_' . $n));
+    $caption = trim(strip_tags($post['caption']));
+    if ($post['url'] !== ''):
+        $hasInstagramEmbed = true;
+?>
+     <article class="social-embed" aria-label="Публикация Instagram <?= $n ?>">
+      <blockquote class="instagram-media" data-instgrm-permalink="<?= h($post['url']) ?>" data-instgrm-version="14">
+       <a href="<?= h($post['url']) ?>" target="_blank" rel="noopener noreferrer">Смотреть публикацию <?= h($handle) ?> в Instagram</a>
+      </blockquote>
+     </article>
+<?php continue; endif;
+    if( $postImg === '' ) continue;
+?>
      <article class="social-card">
       <div class="instagram-header">
        <a aria-label="Профиль <?= h($handle) ?>" class="instagram-avatar" href="<?= h($instagram) ?>" rel="noopener noreferrer" target="_blank">
@@ -580,6 +591,9 @@ $marquee = array_values(array_filter(array_map('trim', preg_split('/\R/u', strip
      </article>
 <?php endfor; ?>
     </div>
+<?php if ($hasInstagramEmbed): ?>
+    <script async src="https://www.instagram.com/embed.js"></script>
+<?php endif; ?>
    </div>
   </section>
   <footer class="section site-footer" id="contacts">
@@ -632,6 +646,7 @@ $marquee = array_values(array_filter(array_map('trim', preg_split('/\R/u', strip
       <span><?= h($brand) ?></span>
      </a>
      <p><?= $t('copyright') ?></p>
+     <a class="footer-credit" href="https://astanacreative.kz/" target="_blank" rel="noopener noreferrer">Создание сайтов — <span>Astana Creative</span></a>
      <a href="#">
       Наверх <svg aria-hidden="true" class="svg-icon action-arrow" width="1.1em" height="1.1em" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M12 20V4m-6 6 6-6 6 6"/></svg>
      </a>

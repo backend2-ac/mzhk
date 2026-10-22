@@ -68,13 +68,14 @@ class CompsController extends AppController{
 
 			if( isset($fileName) && $fileName ){
 				$entity->img = $imageObject;
-				if( $entity->get('img') == false ){
+				if( $entity->get('img') === false && !$entity->getError('img') ){
 					$entity->setError('img', [__('Ошибка валидации изображения')]);
 				}
 			}
 
 			if( $entity->getErrors() ){
-				$errors = $entity->getErrors();
+				$this->_imgDelete($entity->uploadedImages());
+                $errors = $entity->getErrors();
 				foreach( $errors as $index => $err ){
 					$this->Flash->error( $err[array_key_first($err)] );
 				}
@@ -89,7 +90,8 @@ class CompsController extends AppController{
 				Cache::delete('comps_en', 'long');
 				return $this->redirect( $this->referer() );
 			} else{
-				$this->Flash->error(__('Ошибка сохранения данных'));
+				$this->_imgDelete($entity->uploadedImages());
+                $this->Flash->error(__('Ошибка сохранения данных'));
 			}
 		}
 	}
@@ -111,6 +113,19 @@ class CompsController extends AppController{
 
 	    	$data1 = $this->request->getData();
 
+            if (preg_match('/^social_post_[1-4]$/D', (string)$data->get('alias'))) {
+                try {
+                    $data1['body'] = \App\Service\InstagramPost::write(
+                        (string)($data1['instagram_embed'] ?? ''),
+                        (string)($data1['social_caption'] ?? '')
+                    );
+                } catch (\InvalidArgumentException $error) {
+                    $this->Flash->error($error->getMessage());
+                    return $this->redirect($this->referer());
+                }
+                unset($data1['instagram_embed'], $data1['social_caption']);
+            }
+
 	    	if( isset($data1['img']) && $data1['img'] ){
 				$imageObject = $data1['img'];
 				$fileName = $imageObject->getClientFilename();
@@ -121,13 +136,14 @@ class CompsController extends AppController{
 
 			if( isset($fileName) && $fileName ){
 				$entity->img = $imageObject;
-				if( $entity->get('img') == false ){
+				if( $entity->get('img') === false && !$entity->getError('img') ){
 					$entity->setError('img', [__('Ошибка валидации изображения')]);
 				}
 			}
 
 			if( $entity->getErrors() ){
-				$errors = $entity->getErrors();
+				$this->_imgDelete($entity->uploadedImages());
+                $errors = $entity->getErrors();
 				foreach( $errors as $index => $err ){
 					$this->Flash->error( $err[array_key_first($err)] );
 				}
@@ -136,9 +152,11 @@ class CompsController extends AppController{
 
 			$new_data = $entity->toArray();
 
-	        $this->$model->patchEntity($data, $new_data);
+	        $previousImages = [$data->get('img'), $data->get('images')];
+            $this->$model->patchEntity($data, $new_data);
 
 	        if ($this->$model->save($data)) {
+                $this->_imgDelete($previousImages);
 	            $this->Flash->success(__('Изменения сохранены'));
 	            Cache::delete('comps', 'long');
 	            Cache::delete('comps_ru', 'long');
@@ -146,7 +164,8 @@ class CompsController extends AppController{
 				Cache::delete('comps_en', 'long');
 	            return $this->redirect( $this->referer() );
 	        }
-	        $this->Flash->error(__('Ошибка сохранения'));
+	        $this->_imgDelete($entity->uploadedImages());
+            $this->Flash->error(__('Ошибка сохранения'));
 	    }
 
 	    $this->set( compact('data') );
@@ -159,6 +178,7 @@ class CompsController extends AppController{
 	    $data = $this->$model->get($item_id);
 
 	    if ($this->$model->delete($data)) {
+                $this->_imgDelete([$data->get('img')]);
 	        $this->Flash->success(__('Элемент был удален'));
 	        Cache::delete('comps', 'long');
 	        Cache::delete('comps_ru', 'long');
@@ -169,6 +189,10 @@ class CompsController extends AppController{
 	    	$this->Flash->error(__('Ошибка удаления'));
 	    }
 	}
+    protected function _imgDelete($img_del = null){
+        \App\Service\ImageStorage::deleteUnused($this->Comps, 'comps', $img_del ?? []);
+    }
+
 }
 
  ?>

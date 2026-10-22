@@ -26,7 +26,7 @@
   <link href="/assets/css/extras.css?v=20261013-4" rel="stylesheet"/>
   <link href="/assets/css/theme-light.css" rel="stylesheet"/>
   <link href="/assets/css/theme-dark.css?v=20261013-4" rel="stylesheet"/>
-  <link href="/assets/css/backend.css?v=1" rel="stylesheet"/>
+  <link href="/assets/css/backend.css?v=20261022" rel="stylesheet"/>
   <script>
    // Тема применяется до отрисовки, чтобы не было «вспышки» не той темы.
    (function(d){try{var t=localStorage.getItem('site-theme');if(t==='dark'||t==='light')d.setAttribute('data-theme',t);}catch(e){}if(!d.getAttribute('data-theme'))d.setAttribute('data-theme','light');})(document.documentElement);
@@ -42,7 +42,7 @@
   <script defer src="/assets/js/main.js?v=20261016-1"></script>
   <script defer src="/assets/js/animations.js"></script>
   <script defer src="/assets/js/forms.js?v=2"></script>
-  <script defer src="/assets/js/extras.js?v=20261013"></script>
+  <script defer src="/assets/js/extras.js?v=20261022"></script>
   <script defer src="/assets/js/theme.js?v=20261013-2"></script>
   <script defer src="/assets/js/backend.js?v=1"></script>
  </body>
