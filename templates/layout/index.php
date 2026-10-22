@@ -22,7 +22,8 @@ use Cake\Core\Configure;
     <?php endif; ?>
     <link rel="stylesheet" href="/cssassel/font-awesome.min.css">
     <link rel="stylesheet" href="/cssassel/slick.min.css">
-    <link rel="shortcut icon" href="/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=20261022-pangaea">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/images/favicon.svg?v=20261022-pangaea">
     <link rel="stylesheet" href="/css/style.css?v=8.67876780">
     
     <!-- <meta name="facebook-domain-verification" content="peetgr6qapbfhz6vqzhmo13qhb6vos"> -->

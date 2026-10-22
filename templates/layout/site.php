@@ -19,7 +19,8 @@
 <?php else: ?>
   <title>Pangaea — МЖК «Астана»</title>
 <?php endif; ?>
-  <link rel="shortcut icon" href="/images/favicon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=20261022-pangaea"/>
+  <link rel="icon" type="image/svg+xml" sizes="any" href="/images/favicon.svg?v=20261022-pangaea"/>
   <link href="/assets/css/styles.css?v=20261016-1" rel="stylesheet"/>
   <link href="/assets/css/animations.css?v=20261013-4" rel="stylesheet"/>
   <link href="/assets/css/forms.css?v=20261013-4" rel="stylesheet"/>
