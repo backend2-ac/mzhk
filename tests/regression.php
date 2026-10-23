@@ -3,7 +3,9 @@
  * Uses only an in-memory database and a newly created temporary image directory.
  */
 error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
-require dirname(__DIR__) . '/vendor/autoload.php';
+$vendor = getenv('MZHK_QA_VENDOR') ?: dirname(__DIR__) . '/vendor';
+$loader = require $vendor . '/autoload.php';
+$loader->addPsr4('App\\', dirname(__DIR__) . '/src/', true);
 if (!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', dirname(__DIR__));
 define('APP_DIR', 'src');
@@ -11,13 +13,13 @@ define('APP', ROOT . '/src/');
 define('CONFIG', ROOT . '/config/');
 define('TMP', sys_get_temp_dir() . '/mzhk-regression-' . bin2hex(random_bytes(8)) . '/');
 define('WWW_ROOT', TMP . 'webroot/');
-define('CORE_PATH', ROOT . '/vendor/cakephp/cakephp/');
+define('CORE_PATH', $vendor . '/cakephp/cakephp/');
 define('CAKE', CORE_PATH . 'src/');
 define('CACHE', TMP . 'cache/');
 define('LOGS', TMP . 'logs/');
 define('RESOURCES', ROOT . '/resources/');
 mkdir(WWW_ROOT, 0755, true);
-require ROOT . '/vendor/cakephp/cakephp/config/bootstrap.php';
+require CORE_PATH . 'config/bootstrap.php';
 
 use App\Service\ImageStorage;
 use App\Service\InstagramPost;
@@ -43,12 +45,14 @@ foreach ($sections as $tableName) {
 }
 $db->execute('CREATE TABLE i18n (id INTEGER PRIMARY KEY AUTOINCREMENT, locale TEXT, model TEXT, foreign_key INTEGER, field TEXT, content TEXT)');
 $checks = 0;
+$uploadStreams = [];
 function check($condition, string $message): void {
     global $checks;
     if (!$condition) throw new RuntimeException('FAIL: ' . $message);
     $checks++;
 }
 function upload(string $format = 'png', int $size = 400): UploadedFile {
+    global $uploadStreams;
     $path = tempnam(TMP, 'input-');
     $image = imagecreatetruecolor($size, $size);
     imagealphablending($image, false);
@@ -58,7 +62,9 @@ function upload(string $format = 'png', int $size = 400): UploadedFile {
     $writer = ['jpg' => 'imagejpeg', 'png' => 'imagepng', 'gif' => 'imagegif'][$format];
     $writer($image, $path);
     imagedestroy($image);
-    return new UploadedFile($path, filesize($path), UPLOAD_ERR_OK, 'PLAN.' . strtoupper($format), 'application/octet-stream');
+    $file = new UploadedFile($path, filesize($path), UPLOAD_ERR_OK, 'PLAN.' . strtoupper($format), 'application/octet-stream');
+    $uploadStreams[] = $file->getStream();
+    return $file;
 }
 function controller(string $section, array $data, string $method = 'POST') {
     $class = 'App\\Controller\\Admin\\' . $section . 'Controller';
@@ -115,6 +121,7 @@ try {
 
     $invalid = tempnam(TMP, 'invalid-'); file_put_contents($invalid, '<script>alert(1)</script>');
     $bad = new UploadedFile($invalid, filesize($invalid), 0, 'fake.JPG', 'image/jpeg');
+    $uploadStreams[] = $bad->getStream();
     controller('Slides', ['title' => 'Bad', 'img' => upload(), 'images' => $bad])->add();
     check(TableRegistry::getTableLocator()->get('Slides')->find()->count() === 0, 'invalid image prevents save');
     check(count(glob(WWW_ROOT . 'img/slides/*.*')) === 0 && count(glob(WWW_ROOT . 'img/slides/thumbs/*')) === 0, 'failed second upload cleans first upload');
@@ -163,10 +170,97 @@ try {
     $html = $view->render('Pages/home', false);
     check(substr_count($html, 'data-instgrm-permalink=') === 4 && substr_count($html, 'https://www.instagram.com/embed.js') === 1, 'four posts with one official embed script');
     check(strpos($html, 'href="https://astanacreative.kz/"') !== false, 'footer attribution link rendered');
+
+    // Cards without a video URL stay photographs, including whitespace-only values.
+    $gallery = [
+        ['title' => 'Знакомство с Pangaea', 'link' => 'https://youtu.be/abcdefghijk', 'img' => 'first.jpg'],
+        ['title' => 'Пространство для жизни', 'link' => '', 'img' => 'second.jpg'],
+        ['title' => 'Место для отдыха', 'link' => '   ', 'img' => 'third.jpg'],
+    ];
+    $view = new \App\View\AppView();
+    $view->set('galleries', $gallery);
+    $html = $view->render('Pages/home', false);
+    check(substr_count($html, 'class="gallery-play"') === 1, 'only linked gallery card has Play');
+    check(substr_count($html, 'class="gallery-preview gallery-photo"') === 2, 'empty and whitespace URLs render non-interactive photos');
+    check(strpos($html, 'data-gallery-video') === false && strpos($html, 'gallery-status') === false, 'unconnected video demo controls are absent');
+    foreach (['first.jpg', 'second.jpg', 'third.jpg'] as $filename) {
+        check(strpos($html, '/img/galleries/' . $filename) !== false, 'gallery photo retained: ' . $filename);
+    }
+    $gallery[1]['link'] = 'https://youtu.be/12345678901';
+    $view = new \App\View\AppView();
+    $view->set('galleries', $gallery);
+    $html = $view->render('Pages/home', false);
+    check(substr_count($html, 'class="gallery-play"') === 2 && strpos($html, 'data-video-src="https://youtu.be/12345678901"') !== false, 'adding a URL automatically enables the second player');
+
+    // Render actual list/edit templates with optional SVG, raster and missing media.
+    foreach (['Advans', 'Characteristics', 'Preferences', 'Services'] as $section) {
+        $directory = strtolower($section);
+        $filename = ImageStorage::upload(upload('jpg'), $directory);
+        $rows = [];
+        foreach ([
+            ['icon' => '<svg viewBox="0 0 32 32"><path d="M4 4h24v24H4z"/></svg>', 'img' => ''],
+            ['icon' => '', 'img' => $filename],
+            ['icon' => '', 'img' => ''],
+            ['icon' => '', 'img' => 'missing.jpg'],
+        ] as $i => $media) {
+            $rows[] = $media + ['id' => 100 + $i, 'title' => 'QA media', 'body' => 'Description', 'item_order' => 0];
+        }
+        $view = new \App\View\AppView(new ServerRequest(['url' => '/admin/' . $directory]));
+        $view->set('data', $rows);
+        $html = $view->render('Admin/' . $section . '/index', false);
+        check(substr_count($html, 'class="admin-media-preview"') === 2 && substr_count($html, 'Нет изображения') === 2, "$section list handles SVG, raster, empty and missing files");
+        check(strpos($html, '/img/' . $directory . '/thumbs/' . $filename) !== false, "$section existing thumbnail is displayed");
+        check(strpos($html, 'data:image/svg+xml;base64,') !== false, "$section SVG is displayed as an image document");
+        $model = $section === 'Characteristics' ? 'Сharacteristics' : $section;
+        $view = new \App\View\AppView(new ServerRequest(['url' => '/admin/' . $directory . '/edit/100']));
+        $editRow = $section === 'Services' ? $rows[1] : $rows[0];
+        $view->set('data', TableRegistry::getTableLocator()->get($model)->newEntity($editRow));
+        $html = $view->render('Admin/' . $section . '/edit', false);
+        $expectedMedia = $section === 'Services' ? '/img/services/thumbs/' . $filename : 'data:image/svg+xml;base64,';
+        check(strpos($html, $expectedMedia) !== false && strpos($html, 'name="img"') !== false, "$section edit displays existing media and retains upload control");
+        unlink(WWW_ROOT . "img/$directory/thumbs/$filename");
+        $view = new \App\View\AppView();
+        $html = $view->element('admin/media_preview', ['item' => $rows[1], 'directory' => $directory]);
+        check(strpos($html, '/img/' . $directory . '/' . $filename) !== false, "$section missing thumbnail falls back to existing original");
+    }
+    $view = new \App\View\AppView();
+    $html = $view->element('admin/media_preview', ['item' => ['img' => '../other.jpg'], 'directory' => 'advans']);
+    check(strpos($html, '<img') === false, 'preview never emits a directory traversal URL');
+
+    $galleryTable = TableRegistry::getTableLocator()->get('Galleries');
+    foreach (['add', 'edit'] as $action) {
+        $view = new \App\View\AppView(new ServerRequest(['url' => '/admin/galleries/' . $action]));
+        $view->set('data', $galleryTable->newEntity(['id' => 99, 'title' => 'Photo', 'link' => '', 'img' => '']));
+        $html = $view->render('Admin/Galleries/' . $action, false);
+        preg_match('/<input\b[^>]*name="link"[^>]*>/', $html, $input);
+        check(!empty($input) && strpos($input[0], 'required') === false && strpos($input[0], 'id="inputLink"') !== false, "gallery $action permits photos without a link and has a unique link field ID");
+    }
+
+    $privacy = new \App\Controller\PagesController(new ServerRequest(['url' => '/privacy-policy']));
+    $privacy->privacyPolicy();
+    $meta = $privacy->viewBuilder()->getVars()['meta'];
+    check($meta['title'] === 'Политика конфиденциальности — Pangaea', 'privacy route sets a descriptive tab title');
+    $view = new \App\View\AppView();
+    $header = $view->element('header');
+    $home = $view->render('Pages/home', false);
+    foreach (['about', 'advantages', 'payment', 'specifications'] as $anchor) {
+        check(strpos($header, 'href="/#' . $anchor . '"') !== false && strpos($home, 'id="' . $anchor . '"') !== false, 'privacy navigation targets an existing home section: ' . $anchor);
+    }
+    $view = new \App\View\AppView();
+    $policyComps = array_fill(1, 11, ['body' => '']);
+    $view->set(['meta' => $meta, 'comps' => $policyComps]);
+    $html = $view->renderLayout('Policy', 'index');
+    check(strpos($html, '<title>Политика конфиденциальности — Pangaea</title>') !== false, 'privacy title is rendered without the stray less-than character');
+    $view = new \App\View\AppView();
+    $view->set('comps', $policyComps);
+    $html = $view->renderLayout('Policy', 'index');
+    check(strpos($html, '<title>Pangaea — МЖК «Астана»</title>') !== false, 'secondary page fallback title is well formed');
     echo "PASS: $checks regression checks; isolated DB and files only.\n";
 } finally {
+    foreach ($uploadStreams as $stream) $stream->close();
     // Remove only the randomly generated test directory owned by this process.
     $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(TMP, FilesystemIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST);
     foreach ($files as $file) { $file->isDir() ? rmdir($file->getPathname()) : unlink($file->getPathname()); }
+    unset($files, $file);
     rmdir(TMP);
 }

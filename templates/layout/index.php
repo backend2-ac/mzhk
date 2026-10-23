@@ -11,12 +11,12 @@ use Cake\Core\Configure;
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <?php if( isset($meta) && $meta['title'] ): ?>
-    <title><?= $meta['title'] ?></title>
-    <meta name="description" content="<?= $meta['desc'] ?>" />
-    <meta name="keywords" content="<?= $meta['keys'] ?>" />
+    <?php if( !empty($meta['title']) ): ?>
+    <title><?= h($meta['title']) ?></title>
+    <meta name="description" content="<?= h($meta['desc'] ?? '') ?>" />
+    <meta name="keywords" content="<?= h($meta['keys'] ?? '') ?>" />
     <?php else: ?>
-    <title>ТАУНХАУСЫ И МЖК АСТАНА<</title>
+    <title>Pangaea — МЖК «Астана»</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <?php endif; ?>

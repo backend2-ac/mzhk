@@ -49,7 +49,7 @@
 									<?=$item['title']?>
 								</td>
 								<td>
-									<img src="/img/services/thumbs/<?= $item['img'] ?>" width="150" alt="">
+									<?= $this->element('admin/media_preview', ['item' => $item, 'directory' => 'services']) ?>
 								</td>
 								<td>
 									<?= $item['item_order'] ?>

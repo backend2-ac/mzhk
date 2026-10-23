@@ -397,30 +397,34 @@ $marquee = array_values(array_filter(array_map('trim', preg_split('/\R/u', strip
      <p><?= $t('video_lead') ?></p>
     </div>
     <div class="video-grid">
-<?php $noLink = false; foreach( $galleries as $i => $item ):
+<?php foreach( $galleries as $i => $item ):
     $link = trim((string)($item['link'] ?? ''));
-    if( $link === '' ){ $noLink = true; }
 ?>
      <article class="video-card<?= $i === 0 ? ' video-featured' : '' ?>">
-      <button aria-label="Открыть видео: <?= h($item['title']) ?>" class="gallery-preview"<?= $link !== '' ? ' data-video-src="' . h($link) . '" data-video-title="' . h($item['title']) . '"' : ' data-gallery-video=""' ?> type="button">
+<?php if( $link !== '' ): ?>
+      <button aria-label="Открыть видео: <?= h($item['title']) ?>" class="gallery-preview" data-video-src="<?= h($link) ?>" data-video-title="<?= h($item['title']) ?>" type="button">
+<?php else: ?>
+      <div class="gallery-preview gallery-photo">
+<?php endif; ?>
        <?php if( !empty($item['img']) ): ?><img alt="<?= h($item['title']) ?>" loading="lazy" src="/img/galleries/<?= h($item['img']) ?>"/><?php endif; ?>
 
+<?php if( $link !== '' ): ?>
        <span aria-hidden="true" class="gallery-play">
        </span>
        <span class="gallery-label">ВИДЕО</span>
       </button>
+<?php else: ?>
+      </div>
+<?php endif; ?>
       <div class="gallery-copy">
        <div>
         <h3><?= h($item['title']) ?></h3>
        </div>
-       <span aria-hidden="true"><?= $icArrowUp ?></span>
+       <?php if( $link !== '' ): ?><span aria-hidden="true"><?= $icArrowUp ?></span><?php endif; ?>
       </div>
      </article>
 <?php endforeach; ?>
     </div>
-<?php if( $noLink && $t('video_status') !== '' ): ?>
-    <p class="gallery-status" hidden="" role="status"><?= $t('video_status') ?></p>
-<?php endif; ?>
    </div>
   </section>
   <section aria-labelledby="specifications-title" class="section" id="specifications">

@@ -29,8 +29,9 @@
                         <?= $this->Form->textarea('title', array('id' => 'inputTitle', 'class' => 'form-control', 'required')); ?>
                     </div>
                     <div class="form-group">
-                        <label for="inputTitle">Ссылка на видео</label>
-                        <?= $this->Form->textarea('link', array('id' => 'inputTitle', 'class' => 'form-control', 'required')); ?>
+                        <label for="inputLink">Ссылка на видео</label>
+                        <?= $this->Form->text('link', array('id' => 'inputLink', 'class' => 'form-control')); ?>
+                        <small class="form-text text-muted">Если ссылка не указана, на сайте отображается фотография без кнопки Play.</small>
                     </div>
                     <div class="form-group">
                         <label for="reviewimg">Картинка</label>

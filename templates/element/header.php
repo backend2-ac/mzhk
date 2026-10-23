@@ -15,9 +15,9 @@
             </a>
             <ul class="header__links">
                 <li class="header__link"><a href="/#about">О комплексе</a></li>
-                <li class="header__link"><a href="/#pre">Преимущества</a></li>
-                <li class="header__link"><a href="/#uslov">Условия приобритения жилья</a></li>
-                <li class="header__link"><a href="/#xarakter">ХАРАКТЕРИСТИКИ</a></li>
+                <li class="header__link"><a href="/#advantages">Преимущества</a></li>
+                <li class="header__link"><a href="/#payment">Условия приобретения жилья</a></li>
+                <li class="header__link"><a href="/#specifications">Характеристики</a></li>
             </ul>
             <div class="header__btn">
                 <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

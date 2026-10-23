@@ -45,7 +45,7 @@
         				<?=$item['title']?>
         			</td>
               <td>
-                <img src="/img/preferences/thumbs/<?= $item['img'] ?>" width="150" alt="">
+                <?= $this->element('admin/media_preview', ['item' => $item, 'directory' => 'preferences']) ?>
         			</td>
               <td>
         				<?= $item['item_order'] ?>

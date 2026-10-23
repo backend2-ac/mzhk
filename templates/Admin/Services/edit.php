@@ -34,15 +34,13 @@
 					</div>
                     <div class="form-group">
                         <label for="reviewimg">Картинка</label>
-                        <?php if(!empty($data['img'])): ?>
                         <div class="model_info_img">
                             <div class="model_item_container">
                                 <div class="model_item">
-                                    <img src="/img/services/thumbs/<?=$data['img']?>">
+                                    <?= $this->element('admin/media_preview', ['item' => $data, 'directory' => 'services']) ?>
                                 </div>
                             </div>
                         </div>
-                        <?php endif ?>
                         <div class="input-group">
                             <div class="custom-file">
                                 <?= $this->Form->input('img', array('class' => 'custom-file-input', 'id' => 'reviewimg', 'type' => 'file', 'accept' => 'image/jpeg, image/png, image/jpg, image/gif')); ?>

@@ -176,8 +176,12 @@ class PagesController extends AppController
         $this->set( compact('meta','slides','houses','houses_2','advans','infrastructures','galleries','characteristics','preferences','services') );
     }
 
-    public function privacyPolicy(){
-        
+    public function privacyPolicy(): void{
+        $this->set('meta', [
+            'title' => 'Политика конфиденциальности — Pangaea',
+            'desc' => 'Политика конфиденциальности и обработки персональных данных Pangaea / МЖК «Астана».',
+            'keys' => '',
+        ]);
     }
 
 }

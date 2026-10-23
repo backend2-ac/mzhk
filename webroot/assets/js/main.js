@@ -17,9 +17,6 @@ planTabs.forEach((tab,index) => {
 });
 document.querySelectorAll('[data-plan]').forEach(button=>button.addEventListener('click',()=>{document.getElementById('selection-form').scrollIntoView({behavior:'smooth',block:'center'});document.querySelector('#selection-form input').focus({preventScroll:true});}));
 
-document.querySelectorAll('[data-gallery-video]').forEach(button=>button.addEventListener('click',()=>{document.querySelector('.gallery-status').hidden=false;}));
-
-
 // Слайдер первого экрана: автопрокрутка, стрелки, индикаторы, свайп, клавиатура.
 // Чтобы добавить слайд, вставьте ещё один <img class="hero-slide"> внутрь .hero-slides.
 (() => {

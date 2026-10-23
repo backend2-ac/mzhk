@@ -49,7 +49,7 @@
         				<?=$item['body']?>
         			</td>
               <td>
-                <img src="/img/characteristics/thumbs/<?= $item['img'] ?>" width="150" alt="">
+                <?= $this->element('admin/media_preview', ['item' => $item, 'directory' => 'characteristics']) ?>
         			</td>
               <td>
         				<?= $item['item_order'] ?>
