@@ -1,0 +1,135 @@
+.not-found-page {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  border-top: 3px solid var(--accent);
+}
+.not-found-header, .not-found-main, .not-found-footer {
+  width: min(1320px, calc(100% - 96px));
+  margin-inline: auto;
+}
+.not-found-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-block: 30px;
+}
+.not-found-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 32px;
+  letter-spacing: -.04em;
+}
+.not-found-brand img { display: block; flex: none; }
+.not-found-header-actions { display: flex; align-items: center; gap: 28px; }
+.not-found-header-link { color: var(--text); text-decoration: none; }
+.not-found-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 64px;
+  padding-block: 48px 64px;
+}
+.not-found-copy h1 {
+  margin: 0;
+  font: 400 clamp(48px, 5vw, 72px)/1.08 Lora, Georgia, serif;
+  letter-spacing: -.025em;
+}
+.not-found-copy p {
+  max-width: 42ch;
+  margin: 28px 0 0;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.8;
+}
+.not-found-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 24px 28px; margin-top: 36px; }
+.not-found-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 56px;
+  padding: 16px 28px;
+  border: 1px solid var(--accent);
+  border-radius: 100px;
+  background: var(--accent);
+  color: var(--ink);
+  text-decoration: none;
+}
+.not-found-home svg { width: 24px; height: 24px; }
+.not-found-home:hover { filter: brightness(1.06); }
+.not-found-plans { color: var(--accent-ink); text-underline-offset: 6px; }
+.not-found-code {
+  display: grid;
+  align-items: center;
+  min-height: 320px;
+  padding-left: 56px;
+  border-left: 1px solid var(--line-strong);
+  color: var(--accent-text);
+  font: 400 clamp(150px, 21vw, 288px)/1 Lora, Georgia, serif;
+  letter-spacing: -.06em;
+}
+@supports (-webkit-text-stroke: 1px #000) {
+  .not-found-code { color: transparent; -webkit-text-stroke: 1px var(--accent-text); }
+}
+.not-found-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px 32px;
+  border-top: 1px solid var(--line-strong);
+  padding-block: 26px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.not-found-footer nav { display: flex; flex-wrap: wrap; gap: 24px; }
+.not-found-footer a { color: inherit; text-decoration: none; }
+.not-found-footer a:hover, .not-found-header-link:hover { color: var(--accent-ink); }
+.not-found-page a:focus-visible, .not-found-page button:focus-visible {
+  outline: 2px solid var(--accent-ink);
+  outline-offset: 6px;
+}
+.not-found-sr, .not-found-skip:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.not-found-skip:focus { padding: 12px 24px; color: var(--text); background: var(--card); }
+@media (max-width: 900px) {
+  .not-found-main { gap: 32px; }
+  .not-found-code { padding-left: 28px; }
+  .not-found-actions { gap: 24px; }
+}
+@media (max-width: 700px) {
+  .not-found-header, .not-found-main, .not-found-footer { width: calc(100% - 40px); }
+  .not-found-header { padding-block: 22px; }
+  .not-found-brand { font-size: 28px; gap: 12px; }
+  .not-found-brand img { width: 38px; height: 38px; }
+  .not-found-header-link { display: none; }
+  .not-found-main { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 28px 56px; }
+  .not-found-code {
+    grid-row: 1;
+    min-height: 0;
+    padding: 0 0 28px;
+    border-left: 0;
+    border-bottom: 1px solid var(--line-strong);
+    font-size: clamp(128px, 35vw, 196px);
+  }
+  .not-found-copy h1 { font-size: clamp(40px, 10vw, 56px); }
+  .not-found-copy p { margin-top: 22px; font-size: 16px; line-height: 1.75; }
+  .not-found-actions { margin-top: 28px; }
+  .not-found-footer { flex-direction: column; align-items: flex-start; gap: 18px; padding-block: 24px; }
+}
